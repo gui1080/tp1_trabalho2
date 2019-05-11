@@ -31,6 +31,11 @@ https://github.com/therealguib545/tp1_trabalho2
 # Documentação
 
 
+# Smoke Test
+
+Abrir o "index.html" na pasta Smoke Test para ver os testes. 
+
+
 # Observações relacionadas ao código:
 
 Feito em Code::Blocks no Windows 10 por requisito da matéria.
