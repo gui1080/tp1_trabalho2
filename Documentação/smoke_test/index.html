@@ -1,5 +1,7 @@
 <html>
 
+	<!-- Headers -->
+
 	<head>
 		<title>Trabalho 2 de TP1 - Smoke test</title>
 	</head>
@@ -7,78 +9,238 @@
 	<body background="fundo.jpg">
 
 	<h1 align = "center"> Smoke Test </h1>
-	<h2 align = "center"> Trabalho 2 de TP1 por Guilherme Braga e Gabriel Matheus</h2>  
+	<h2 align = "center"> Trabalho 2 de TP1 por Guilherme Braga (17/0162290) e Gabriel Matheus (17/0103498)</h2>
 
 	<a href="unb.png"> <img src="unb.png" title="UnB" hspace=700 vspace=15> </a>
 
-	<hr />
+	<hr/>
+
+	<!-- Enumerando casos de teste -->
 
 	<br/>
 	<h3 align = "left"> <font size="5"> 1&ordm; Teste </font> </h3>
 
 		<b> Propósito: </b> <p> Testar do ponto de vista de um novo usuário.</p>
-
 		<b> Procedimento: </b>
 
-		<ol> 
-
-			<li> Executar o Programa </li> 
+		<ol>
+			<li> Executar o Programa </li>
 			<li> Criar conta </li>
-			<li> Fechar o Programa </li>  
-
-
+			<li> Fechar o Programa </li>
 		</ol>
 
 	<br/>
 	<h3 align = "left"> <font size="5"> 2&ordm; Teste </font> </h3>
 
 		<b> Propósito: </b> <p> Testar do ponto de vista de um usuário recorrente.</p>
-
 		<b> Procedimento: </b>
 
-		<ol> 
-
-			<li> Executar o Programa </li> 
+		<ol>
+			<li> Executar o Programa </li>
 			<li> Fazer login com sua conta que foi criada antes </li>
-			<li> Fechar o Programa </li>  
-
-
+			<li> Fechar o Programa </li>
 		</ol>
 
 	<br/>
 	<h3 align = "left"> <font size="5"> 3&ordm; Teste </font> </h3>
 
-		<b> Propósito: </b> <p> Testar do ponto de vista de um usuário casual, pesquisando possiveis eventos. </p>
-
+		<b> Propósito: </b> <p> Testar a segurança do usuário.</p>
 		<b> Procedimento: </b>
 
-		<ol> 
+		<ol>
 			<li> Executar o Programa </li>
-			<li> Clicar no local relacionado aos Eventos </li>
+			<li> Fazer login com sua conta que não foi criada antes </li>
+			<li> Ser impossibilitado de ingressar no sistema </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 4&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p> Testar do ponto de vista de um usuário casual, pesquisando possíveis eventos. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Selecionar a opção relacionada aos Eventos </li>
 			<li> Checar os Eventos existentes, com suas Apresentações </li>
 			<li> Fechar o Programa</li>
 
 		</ol>
 
 	<br/>
-	<h3 align = "left"> <font size="5"> 4&ordm; Teste </font> </h3>
+
+	<h3 align = "left"> <font size="5"> 5&ordm; Teste </font> </h3>
 
 		<b> Propósito: </b> <p>Testar do ponto de vista do dono de um Evento. </p>
-
 		<b> Procedimento: </b>
 
-		<ol> 
+		<ol>
 			<li> Executar o Programa </li>
 			<li> Fazer login </li>
 			<li> Criar um novo Evento, informando todos os seus dados relacionados </li>
 			<li> Fechar o Programa </li>
-
 		</ol>
-	
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 6&ordm; Teste </font> </h3>
+
+			<b> Propósito: </b> <p>Testar do ponto de vista do comprador. </p>
+			<b> Procedimento: </b>
+
+			<ol>
+				<li> Executar o Programa </li>
+				<li> Fazer login </li>
+				<li> Escolher um Evento </li>
+				<li> Comprar um ingresso </li>
+				<li> Fechar o Programa </li>
+			</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 7&ordm; Teste </font> </h3>
+
+			<b> Propósito: </b> <p>Testar do ponto de vista do comprador. </p>
+			<b> Procedimento: </b>
+
+			<ol>
+				<li> Executar o Programa </li>
+				<li> Fazer login </li>
+				<li> Escolher um Evento que já está esgotado </li>
+				<li> Tentar comprar um ingresso, e falhar </li>
+				<li> Fechar o Programa </li>
+			</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 8&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p>Testar do ponto de vista do comprador. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Criar uma conta nova </li>
+			<li> Entrar no sistema </li>
+			<li> Efetuar descadastramento </li>
+			<li> Terminar a operação com sucesso </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 9&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p>Testar do ponto de vista do comprador. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Entrar no sistema </li>
+			<li> Ver os eventos disponíveis </li>
+			<li> Comprar múltiplos ingressos de uma só vez </li>
+			<li> Terminar a operação com sucesso </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 10&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p>Testar do ponto de vista do comprador que talvez não tenha lido as especificações do evento com atenção (ou um possível erro de digitação). </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Entrar no sistema </li>
+			<li> Ver os eventos disponíveis </li>
+			<li> Tentar comprar milhões de ingressos de um evento com um número de ingressos limitado </li>
+			<li> Falhar na operação </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 11&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p>Testar do ponto de vista de quem organiza um determinado Evento. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Entrar no sistema </li>
+			<li> Criar um Evento novo </li>
+			<li> Descadastrar o Evento logo em seguida </li>
+			<li> Terminar a operação com sucesso </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 12&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p> Evitar fraude. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Entrar no sistema </li>
+			<li> Criar um Evento novo para apenas 1 pessoa </li>
+			<li> Sair do sistema </li>
+			<li> Entrar novamente com outra conta </li>
+			<li> Comprar o ingresso do Evento de 1 pessoa </li>
+			<li> Sair do sistema </li>
+			<li> Fazer login com a conta que é dona do Evento de teste </li>
+			<li> Tentar apagar o Evento </li>
+			<li> Falhar na operação </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 13&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p> Evitar fraude. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Criar conta nova </li>
+			<li> Tentar cadastrar um cartão de crédito que não existe </li>
+			<li> Falhar na operação </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 14&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p> Testar premissões associadas a um usuário. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Criar conta nova </li>
+			<li> Tentar alterar um evento préviamente estabelecido </li>
+			<li> Determinar impossibilidade </li>
+			<li> Fechar o Programa </li>
+		</ol>
+
+	<br/>
+	<h3 align = "left"> <font size="5"> 15&ordm; Teste </font> </h3>
+
+		<b> Propósito: </b> <p> Testar premissões associadas a um usuário. </p>
+		<b> Procedimento: </b>
+
+		<ol>
+			<li> Executar o Programa </li>
+			<li> Criar conta nova </li>
+			<li> Comprar um número qualquer de ingressos </li>
+			<li> Se descadastrar do sistema mesmo tendo comprado ingressos </li>
+			<li> Fechar o Programa </li>
+		</ol>
 
 
-	<br />
 
+<!-- Final dos casos de teste -->
+
+	<br/>
+
+<!-- Link do Github -->
 	<a href="https://github.com/therealguib545/tp1_trabalho2" target="_blank"> <img src="github.png" width="80" height="80" hspace=900 vspace=15> </a>
 
 </html>
+
+<!-- Ao final, passar tudo para um PDF -->
