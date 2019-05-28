@@ -1,4 +1,4 @@
-# Trabalho 1 de Técnicas de Programação 1
+# Trabalho 2 de Técnicas de Programação 1
 
 Professor: Fernando Antonio de Araújo Chacon de Albuquerque
 
