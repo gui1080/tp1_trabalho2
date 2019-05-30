@@ -33,7 +33,7 @@ https://github.com/therealguib545/tp1_trabalho2
 
 # Smoke Test
 
-Abrir o "index.html" na pasta Smoke Test para ver os testes, ou abrir o PDF. 
+Abrir o PDF, ou abrir o "index.html" na pasta Smoke Test para ver os testes. 
 
 
 # Observações relacionadas ao código:
