@@ -53,6 +53,10 @@ public:
      *
      */
     void getUsuario(CPF *cpf_f, Senha *senha_f);
+
+    Senha getSenha(){
+        return senha;
+    }
 };
 
 
@@ -221,5 +225,43 @@ public:
     void getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
                    Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f);
 };
+
+
+// -------------------------------------------ENTIDADE DE RESULTADO---------------------------------
+class Resultado {                                 //classe abstrata
+
+protected:
+    int valor;
+
+public:
+
+    const static int SUCESSO = 0;
+    const static int FALHA   = 1;
+
+    void setValor(int valor){
+        this->valor = valor;
+    }
+
+    int getValor() const {
+        return valor;
+    }
+};
+
+class ResultadoUsuario:public Resultado {
+
+private:
+    Usuario usuario;
+
+public:
+    void setUsuario(const Usuario &usuario){
+        this->usuario = usuario;
+    }
+
+    Usuario getUsuario() const {
+        return usuario;
+    }
+};
+
+
 
 #endif // ENTIDADES_H_INCLUDED

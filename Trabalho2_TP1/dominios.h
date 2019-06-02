@@ -524,6 +524,7 @@ private:
 
         void validar(string) throw (invalid_argument);
 
+
 public:
         // Métodos de acesso.
 
@@ -543,6 +544,11 @@ public:
      */
         string getSenha() const {
             return senha;
+        }
+
+        int getValor() const{
+            int valor = atoi(senha);
+            return valor;
         }
 };
 

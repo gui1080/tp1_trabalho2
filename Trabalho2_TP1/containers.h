@@ -4,6 +4,7 @@
 #include "dominios.h"
 #include "entidades.h"
 
+
 #include <list>
 
 class ContainerUsuario{
@@ -18,10 +19,9 @@ public:
 
     // Metodos por meio dos quais sao solicitados os servicos.
 
-    //ResultadoUsuario incluir(Usuario);
-    //ResultadoUsuario remover(Matricula);
-    //ResultadoUsuario pesquisar(Matricula);
+    ResultadoUsuario incluir(Usuario);
+    ResultadoUsuario remover(Senha);
+    ResultadoUsuario pesquisar(Senha);
 };
-
 
 #endif // CONTAINERS_H_INCLUDED
