@@ -9,6 +9,7 @@
 
 
 #include "dominios.h"
+
 #include <string>
 #include <iostream>
 
@@ -27,7 +28,6 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
     return;
 
 }
-
 
 void Ingresso::setIngresso(int novo_codigo) throw (invalid_argument){
 

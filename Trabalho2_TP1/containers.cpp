@@ -5,21 +5,28 @@
 ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
 
     ResultadoUsuario resultado;
+    CPF cpf_aux;
+    Senha senha_aux;
+    long long int resultado_cpf_incluir;
 
-    // a chave vai ser a senha
+    // a chave vai ser o cpf
 
-    int chave = 0;
-    chave = usuario.getSenha().getValor();
+    usuario.getUsuario(&cpf_aux, &senha_aux);
+    long long int chave = cpf_aux.getCPF();
+    //cout << "chave eh: " << chave << "\n";
 
     // Procurar o elemento.
 
     for(list<Usuario>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
-        if (elemento->getSenha().getValor() == chave){
+       elemento->getUsuario(&cpf_aux, &senha_aux);
+       resultado_cpf_incluir = cpf_aux.getCPF();
 
+        if (resultado_cpf_incluir == chave){
             // Elemento localizado.
 
             resultado.setValor(Resultado::FALHA);
+            cout << "usuario ja cadastrado" << "\n\n";
             return resultado;
         }
     }
@@ -28,23 +35,32 @@ ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
 
     container.push_back(usuario);
     resultado.setValor(Resultado::SUCESSO);
+    cout << "usuario cadastrado com sucesso" << "\n\n";
     return resultado;
+
 }
 
 
-ResultadoUsuario ContainerUsuario::remover(Senha senha){
+ResultadoUsuario ContainerUsuario::remover(CPF cpf){
 
     // Procurar e remover um elemento.
 
     ResultadoUsuario resultado;
+
+    CPF cpf_aux;
+    Senha senha_aux;
+    long long int resultado_cpf_remover;
+
     resultado.setValor(Resultado::FALHA);
 
-    int chave = senha.getValor();
+    long long int chave = cpf.getCPF();
 
     for(list<Usuario>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
-        if (elemento->getSenha().getValor() == chave){
+       elemento->getUsuario(&cpf_aux, &senha_aux);
+       resultado_cpf_remover = cpf_aux.getCPF();
 
+        if (resultado_cpf_remover == chave){
             // Elemento localizado.
 
             container.erase(elemento);
@@ -55,29 +71,37 @@ ResultadoUsuario ContainerUsuario::remover(Senha senha){
     return resultado;
 }
 
-ResultadoUsuario ContainerUsuario::pesquisar(Senha senha){
+ResultadoUsuario ContainerUsuario::pesquisar(CPF cpf){
 
     // Procurar elemento.
 
     ResultadoUsuario resultado;
+    CPF teste_cpf;
+    Senha teste_senha;
+    long long int resultado_cpf;
+
     resultado.setValor(Resultado::FALHA);
 
-    int chave = senha.getValor();
+    long long int chave = cpf.getCPF();
 
     for(list<Usuario>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
-        if (elemento->getSenha().getValor() == chave){
+           elemento->getUsuario(&teste_cpf, &teste_senha);
+           resultado_cpf = teste_cpf.getCPF();
+
+        if (resultado_cpf == chave){
 
             // Elemento localizado.
 
             resultado.setUsuario(*elemento);
             resultado.setValor(Resultado::SUCESSO);
+            cout << "usuario encontrado";
+            cout << "\n";
             return resultado;
         }
     }
 
+    cout << "usuario nao encontrado";
+    cout << "\n";
     return resultado;
 }
-
-
-
