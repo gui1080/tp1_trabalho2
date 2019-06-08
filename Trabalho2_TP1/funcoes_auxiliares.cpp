@@ -2,7 +2,6 @@
 
 int menu_tela_inicial(int *escolha_inicial){
 
-    cout << "BEM VINDO AO SISTEMA DE VENDA DE INGRESSOS" << endl;
     cout << "Escolha o que se deseja fazer:" << endl;
     cout << "------------------------------------------------------" << endl;
     cout << "----------    Criar usuario: Digite 1 ----------------" << endl;

@@ -228,6 +228,8 @@ public:
 
 
 // -------------------------------------------ENTIDADE DE RESULTADO---------------------------------
+
+
 class Resultado {                                 //classe abstrata
 
 protected:
@@ -261,6 +263,22 @@ public:
         return usuario;
     }
 };
+
+class ResultadoEvento:public Resultado {
+
+private:
+    Evento evento;
+
+public:
+    void setEvento(const Evento &evento){
+        this->evento = evento;
+    }
+
+    Evento getEvento() const {
+        return evento;
+    }
+};
+
 
 
 

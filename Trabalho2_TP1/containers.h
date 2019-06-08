@@ -35,9 +35,11 @@ public:
 
     // Metodos por meio dos quais sao solicitados os servicos.
 
-    bool incluir(Evento);
-    bool remover(Codigo_de_Evento);
-    Evento pesquisar(Codigo_de_Evento);
+    ResultadoEvento incluir(Evento);
+    ResultadoEvento remover(Codigo_de_Evento);
+    ResultadoEvento pesquisar(Codigo_de_Evento);
+    bool mostrar();
 };
+
 
 #endif // CONTAINERS_H_INCLUD

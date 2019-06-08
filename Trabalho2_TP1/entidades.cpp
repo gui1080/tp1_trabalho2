@@ -44,9 +44,9 @@ void Ingresso::getIngresso(Codigo_de_Ingresso *codigo_f){
 
 void Cartao_de_credito::setCartao_de_credito(long long int numero_f, int codigo_cartao_f, string data_f) throw (invalid_argument){
 
-numero.setNumero_Cartao_Credito(numero_f);
-codigo_cartao.setCodigo_de_Seguranca_Cartao_Credito(codigo_cartao_f);
-data.setData_Validade_Cartao_Credito(data_f);
+    numero.setNumero_Cartao_Credito(numero_f);
+    codigo_cartao.setCodigo_de_Seguranca_Cartao_Credito(codigo_cartao_f);
+    data.setData_Validade_Cartao_Credito(data_f);
 
 }
 
@@ -65,12 +65,12 @@ void Cartao_de_credito::getCartao_de_credito(Numero_Cartao_Credito *numero_f, Co
 void Evento::setEvento(int novo_codigo, string novo_nome, string novo_cidade, string novo_estado,
                 int novo_classe, string novo_faixa) throw (invalid_argument){
 
-codigo.setCodigo_de_Evento(novo_codigo);
-nome.setNome_de_Evento(novo_nome);
-cidade.setCidade(novo_cidade);
-estado.setEstado(novo_estado);
-classe.setClasse_Evento(novo_classe);
-faixa.setFaixa_Etaria(novo_faixa);
+    codigo.setCodigo_de_Evento(novo_codigo);
+    nome.setNome_de_Evento(novo_nome);
+    cidade.setCidade(novo_cidade);
+    estado.setEstado(novo_estado);
+    classe.setClasse_Evento(novo_classe);
+    faixa.setFaixa_Etaria(novo_faixa);
 
 }
 
@@ -92,12 +92,12 @@ void Evento::getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidad
 void Apresentacao::setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
                 int novo_sala, int novo_disponibilidade) throw (invalid_argument){
 
-codigo.setCodigo_de_Apresentacao(novo_codigo);
-data.setData(novo_data);
-horario.setHorario(novo_horario);
-preco.setPreco(novo_preco);
-sala.setNumero_de_Sala(novo_sala);
-disponibilidade.setDisponibilidade(novo_disponibilidade);
+    codigo.setCodigo_de_Apresentacao(novo_codigo);
+    data.setData(novo_data);
+    horario.setHorario(novo_horario);
+    preco.setPreco(novo_preco);
+    sala.setNumero_de_Sala(novo_sala);
+    disponibilidade.setDisponibilidade(novo_disponibilidade);
 
 }
 

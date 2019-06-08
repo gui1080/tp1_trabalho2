@@ -32,18 +32,47 @@ int main(){
 
     system("Color 0A");
 
-//-----------------------------------CONTAINERS---------------------------------------------------------
+    int escolha_inicial = 0;
+    bool mostra_evento;
+
+//-----------------------------------CONTAINERS-----------------------------------------------------------------
 
     ResultadoUsuario resultado;
     ContainerUsuario container;
 
-//----------------------------------OPT 1, novo usuario----------------------------------------------------------
+    ResultadoEvento resultado_e;
+    ContainerEvento container_e;
+
+
+//----------------------------------INICIALIZANDO OS EVENTOS DEFAULT----------------------------------------------------------
+
+    std::cout.setstate(std::ios_base::failbit);       // essa linha "bloqueia" os prints no comeco do programa
+
+    Evento evento_padrao_1;
+    evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L");
+    resultado_e = container_e.incluir(evento_padrao_1);
+
+    Evento evento_padrao_2;
+    evento_padrao_2.setEvento(132, "Black Sabbath Tour!", "Rio de Janeiro", "RJ", 4, "14");
+    resultado_e = container_e.incluir(evento_padrao_2);
+
+    Evento evento_padrao_3;
+    evento_padrao_3.setEvento(984, "Hamlet, por Shakespeare", "Sao Paulo", "SP", 1, "12");
+    resultado_e = container_e.incluir(evento_padrao_3);
+
+    Evento evento_padrao_4;
+    evento_padrao_4.setEvento(923, "Jota Quest Acustico", "Sao Paulo", "SP", 3, "L");
+    resultado_e = container_e.incluir(evento_padrao_4);
+
+    std::cout.clear();
+//--------------------------------------------INICIALIZANDO O USUÁRIO--------------------------------------------------------
     Usuario usuario1;
 
-    while(1){
+    // mensagem de boas vindas inicial, exibida apenas 1 vez
 
-    int escolha_inicial = 0;
-    menu_tela_inicial(&escolha_inicial);
+    cout << "BEM VINDO AO SISTEMA DE VENDA DE INGRESSOS" << endl;
+
+    while(1){
 
     long long int novo_CPF;
     long long int CPF_login_aux;
@@ -51,13 +80,18 @@ int main(){
     char nova_senha[7];
     char senha_login_aux[7];
     Senha senha_login;
-//--------------------------------------------------------------------------------------------
+
+//---------------------------------------MENU-----------------------------------------------------
+
+    menu_tela_inicial(&escolha_inicial);
 
     cout << "Sua escolha: ";
     cout << escolha_inicial << endl;
     cout << "\n";
 
     switch (escolha_inicial){
+
+//----------------------------------OPT 1, novo usuario----------------------------------------------------------
 
         case 1:          // estou usando 69386992086 como exemplo de valor valido de CPF e pAo123 como a senha valida, que nem nos testes do trabalho 1
             cout << "Digite seu CPF (apenas os numeros): " << endl;
@@ -108,7 +142,8 @@ int main(){
         case 3:
 
             // printa o container de eventos, minha sugestão é criar um evento padrão que é criado sempre que o programa começa só pra demosntrar que isso funciona. Pode ser um show da Hatsune de boas.
-
+            mostra_evento = container_e.mostrar();
+            cout << "\n";
             break;
 
         case 4:
@@ -117,10 +152,8 @@ int main(){
             return 0;
 
             break;
+        }
     }
-}
-
-    // ai aqui eu suponho que a gnt faz um while 1 de interacao com o usuario em que a gnt espera o input dele
 
 
     return 0;
