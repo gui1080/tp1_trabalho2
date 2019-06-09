@@ -41,5 +41,22 @@ public:
     bool mostrar();
 };
 
+class ContainerApresentacoes{
+
+private:
+
+    // Refer�ncia para o container.
+
+    list<Apresentacao> container;
+
+public:
+
+    // Metodos por meio dos quais sao solicitados os servicos.
+
+    bool incluir(Apresentacao);
+    bool remover(Apresentacao);
+    Apresentacao pesquisar(Data);
+    bool mostrar();
+};
 
 #endif // CONTAINERS_H_INCLUD

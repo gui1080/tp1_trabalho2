@@ -34,6 +34,7 @@ int main(){
 
     int escolha_inicial = 0;
     bool mostra_evento;
+    bool mostra_apresentacao;
 
 //-----------------------------------CONTAINERS-----------------------------------------------------------------
 
@@ -43,14 +44,23 @@ int main(){
     ResultadoEvento resultado_e;
     ContainerEvento container_e;
 
-
+    ContainerApresentacoes container_ap;
+    bool resultado_ap;
 //----------------------------------INICIALIZANDO OS EVENTOS DEFAULT----------------------------------------------------------
 
     std::cout.setstate(std::ios_base::failbit);       // essa linha "bloqueia" os prints no comeco do programa
 
     Evento evento_padrao_1;
+    Apresentacao apresentacao_padrao_1, apresentacao_padrao_1_2, apresentacao_padrao_1_3;
     evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L");
+    apresentacao_padrao_1.setApresentacao(143, "100410", "13:45", 54, 5, 79);
+    apresentacao_padrao_1_2.setApresentacao(113, "110610", "11:30", 78, 4, 100);
+    apresentacao_padrao_1_3.setApresentacao(123, "091010", "15:15", 100, 2, 50);
     resultado_e = container_e.incluir(evento_padrao_1);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_1);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_1_2);
+
+    resultado_ap = container_ap.incluir(apresentacao_padrao_1_3);
 
     Evento evento_padrao_2;
     evento_padrao_2.setEvento(132, "Black Sabbath Tour!", "Rio de Janeiro", "RJ", 4, "14");
@@ -143,6 +153,7 @@ int main(){
 
             // printa o container de eventos, minha sugestão é criar um evento padrão que é criado sempre que o programa começa só pra demosntrar que isso funciona. Pode ser um show da Hatsune de boas.
             mostra_evento = container_e.mostrar();
+            mostra_apresentacao = container_ap.mostrar();
             cout << "\n";
             break;
 

@@ -205,3 +205,166 @@ bool ContainerEvento::mostrar(){
     return true;
 
 }
+
+bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+
+    bool resultado;
+    string resultado_data;
+    apresentacao.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+    string chave = data_aux.getData();
+
+    for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+           resultado_data = data_aux.getData();
+
+        if (resultado_data == chave){
+            // Elemento localizado.
+
+            resultado = false;
+            cout << "Apresentacao ja cadastrada" << "\n\n";
+            return resultado;
+        }
+    }
+
+    // Incluir o elemento no container.
+
+    container.push_back(apresentacao);
+    resultado = true;
+    cout << "apresentacao cadastrada com sucesso" << "\n\n";
+    return resultado;
+
+}
+
+
+bool ContainerApresentacoes::remover(Apresentacao apresentacao){
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+
+    bool resultado;
+    int resultado_codigo;
+    apresentacao.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+    int chave = codigo_aux.getCodigo_de_Apresentacao();
+
+    for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+           resultado_codigo = codigo_aux.getCodigo_de_Apresentacao();
+
+        if (resultado_codigo == chave){
+
+            // Elemento localizado.
+
+            container.erase(elemento);
+            resultado = true;
+        }
+    }
+
+    resultado = false;
+    return resultado;
+}
+
+Apresentacao ContainerApresentacoes::pesquisar(Data data){
+
+    // Procurar elemento.
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+
+    Apresentacao resultado;
+    string resultado_data;
+    string chave = data.getData();
+
+    for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+           resultado_data = data_aux.getData();
+
+        if (resultado_data == chave){
+
+            // Elemento localizado.
+
+            resultado.setApresentacao(codigo_aux.getCodigo_de_Apresentacao(), data_aux.getData(), horario_aux.getHorario(), preco_aux.getPreco(),
+            sala_aux.getNumero_de_Sala(), disponibilidade_aux.getDisponibilidade());
+            cout << "Apresentacao encontrada";
+            cout << "\n";
+            return resultado;
+        }
+    }
+
+    cout << "Apresentacao nao encontrada";
+    cout << "\n";
+    return resultado;
+}
+
+bool ContainerApresentacoes::mostrar(){
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+
+    int cod_ap_mostrar;
+    string data_mostrar;
+    string horario_mostrar;
+    float preco_mostrar;
+    int num_sala_mostrar;
+    int disp_mostrar;
+
+    // ver os elementos.
+    cout << "Apresentacoes disponiveis:\n" <<endl;
+
+    for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+        elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux);
+
+        cod_ap_mostrar = codigo_aux.getCodigo_de_Apresentacao();
+        data_mostrar = data_aux.getData();
+        horario_mostrar = horario_aux.getHorario();
+        preco_mostrar = preco_aux.getPreco();
+        num_sala_mostrar = sala_aux.getNumero_de_Sala();
+        disp_mostrar = disponibilidade_aux.getDisponibilidade();
+
+        cout << "Codigo de Apresentacao: ";
+        cout << cod_ap_mostrar << endl;
+        cout << "Data: ";
+        cout << data_mostrar <<endl;
+        cout << "Horario: ";
+        cout << horario_mostrar << endl;
+        cout << "Preco: ";
+        cout << preco_mostrar << endl;
+        cout << "Numero de sala: ";
+        cout << num_sala_mostrar <<endl;
+        cout << "Disponibilidade: ";
+        cout << disp_mostrar << endl;
+        cout << "\n" << endl;
+    }
+
+
+    return true;
+
+}
