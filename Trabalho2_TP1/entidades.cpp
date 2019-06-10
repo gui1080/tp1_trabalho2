@@ -9,6 +9,7 @@
 
 
 #include "dominios.h"
+#include "containers.h"
 
 #include <string>
 #include <iostream>
@@ -139,6 +140,30 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
     senha_f->setSenha(this->senha.getSenha());
 
     return;
-
 }
 */
+void Container_Apresentacoes::setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
+                int novo_sala, int novo_disponibilidade) throw (invalid_argument){
+
+    codigo.setCodigo_de_Apresentacao(novo_codigo);
+    data.setData(novo_data);
+    horario.setHorario(novo_horario);
+    preco.setPreco(novo_preco);
+    sala.setNumero_de_Sala(novo_sala);
+    disponibilidade.setDisponibilidade(novo_disponibilidade);
+
+}
+
+void Container_Apresentacoes::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f){
+
+    codigo_f->setCodigo_de_Apresentacao(this->codigo.getCodigo_de_Apresentacao());
+    data_f->setData(this->data.getData());
+    horario_f->setHorario(this->horario.getHorario());
+    preco_f->setPreco(this->preco.getPreco());
+    sala_f->setNumero_de_Sala(this->sala.getNumero_de_Sala());
+    disponibilidade_f->setDisponibilidade(this->disponibilidade.getDisponibilidade());
+
+    return;
+}
+

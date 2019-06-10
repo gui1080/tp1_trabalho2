@@ -196,7 +196,7 @@ public:
  */
 class Apresentacao {
 
-private:
+protected:
 
     Codigo_de_Apresentacao codigo;
     Data data;

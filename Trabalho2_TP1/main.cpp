@@ -91,7 +91,7 @@ int main(){
     teste2.setCPF(29700582191);
     teste3.setIngressos_CPF(teste1, teste2);
 
-    container_ap_cpf.apresentacao.setApresentacao(143, "100410", "13:45", 54, 5, 79);
+    container_ap_cpf.setApresentacao(143, "100410", "13:45", 54, 5, 79);
     resultado_ap_cpf = container_ap_cpf.incluir(teste3);
     if(resultado_ap_cpf == true){
         cout << "deu certo\n" << endl;
@@ -108,7 +108,7 @@ int main(){
     Preco preco_aux;
     Numero_de_Sala sala_aux;
     Disponibilidade disponibilidade_aux;
-/*
+
     container_ap_cpf.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux, &sala_aux, &disponibilidade_aux);
 
     cout << "codigo: " << codigo_aux.getCodigo_de_Apresentacao() << "\n\n";
@@ -117,7 +117,7 @@ int main(){
     cout << "preco: " << preco_aux.getPreco() << "\n\n";
     cout << "sala: " << sala_aux.getNumero_de_Sala() << "\n\n";
     cout << "disponibilidade: " << disponibilidade_aux.getDisponibilidade() << "\n\n";
-*/
+
  //----------------------------------------------------------------------------------------------------------
 
     // mensagem de boas vindas inicial, exibida apenas 1 vez
