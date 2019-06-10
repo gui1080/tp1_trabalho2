@@ -279,7 +279,20 @@ public:
     }
 };
 
+class Ingressos_CPF{
 
+private:
+
+Ingresso ingresso;
+CPF cpf;
+
+public:
+
+    // Metodos por meio dos quais sao solicitados os servicos.
+    void setIngressos_CPF(Ingresso novo_ingresso, CPF novo_cpf) throw (invalid_argument);
+    void getIngressos_CPF(Ingresso *ingresso_f, CPF *cpf_f);
+
+};
 
 
 #endif // ENTIDADES_H_INCLUDED

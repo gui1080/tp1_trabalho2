@@ -47,6 +47,7 @@ private:
 
     // Refer�ncia para o container.
 
+
     list<Apresentacao> container;
 
 public:
@@ -58,5 +59,26 @@ public:
     Apresentacao pesquisar(Data);
     bool mostrar();
 };
+
+class Container_Apresentacoes: public Apresentacao{
+
+private:
+
+    // Refer�ncia para o container.
+    //Apresentacao apresentacao;
+
+    list<Ingressos_CPF> container;
+
+public:
+
+    // Metodos por meio dos quais sao solicitados os servicos.
+
+    Apresentacao apresentacao;
+    bool incluir(Ingressos_CPF);
+    bool remover(Ingressos_CPF);
+    Ingressos_CPF pesquisar(Codigo_de_Ingresso ingresso);
+    bool mostrar();
+};
+
 
 #endif // CONTAINERS_H_INCLUD

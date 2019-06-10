@@ -52,10 +52,12 @@ int main(){
 
     Evento evento_padrao_1;
     Apresentacao apresentacao_padrao_1, apresentacao_padrao_1_2, apresentacao_padrao_1_3;
+
     evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L");
     apresentacao_padrao_1.setApresentacao(143, "100410", "13:45", 54, 5, 79);
     apresentacao_padrao_1_2.setApresentacao(113, "110610", "11:30", 78, 4, 100);
     apresentacao_padrao_1_3.setApresentacao(123, "091010", "15:15", 100, 2, 50);
+
     resultado_e = container_e.incluir(evento_padrao_1);
     resultado_ap = container_ap.incluir(apresentacao_padrao_1);
     resultado_ap = container_ap.incluir(apresentacao_padrao_1_2);
@@ -77,6 +79,46 @@ int main(){
     std::cout.clear();
 //--------------------------------------------INICIALIZANDO O USUÁRIO--------------------------------------------------------
     Usuario usuario1;
+//-------------------------------------------- TESTES --------------------------------------
+
+    Container_Apresentacoes container_ap_cpf;
+    bool resultado_ap_cpf;
+    Ingresso teste1;
+    CPF teste2;
+    Ingressos_CPF teste3, teste4;
+
+    teste1.setIngresso(12345);
+    teste2.setCPF(29700582191);
+    teste3.setIngressos_CPF(teste1, teste2);
+
+    container_ap_cpf.apresentacao.setApresentacao(143, "100410", "13:45", 54, 5, 79);
+    resultado_ap_cpf = container_ap_cpf.incluir(teste3);
+    if(resultado_ap_cpf == true){
+        cout << "deu certo\n" << endl;
+    } else {
+         cout << ";-;\n";
+    }
+    Codigo_de_Ingresso exemplo;
+    teste1.getIngresso(&exemplo);
+    teste4 = container_ap_cpf.pesquisar(exemplo);
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+/*
+    container_ap_cpf.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux, &sala_aux, &disponibilidade_aux);
+
+    cout << "codigo: " << codigo_aux.getCodigo_de_Apresentacao() << "\n\n";
+    cout << "data: " << data_aux.getData() << "\n\n";
+    cout << "horario: " << horario_aux.getHorario() << "\n\n";
+    cout << "preco: " << preco_aux.getPreco() << "\n\n";
+    cout << "sala: " << sala_aux.getNumero_de_Sala() << "\n\n";
+    cout << "disponibilidade: " << disponibilidade_aux.getDisponibilidade() << "\n\n";
+*/
+ //----------------------------------------------------------------------------------------------------------
 
     // mensagem de boas vindas inicial, exibida apenas 1 vez
 

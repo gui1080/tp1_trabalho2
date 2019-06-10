@@ -114,4 +114,31 @@ void Apresentacao::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_
     return;
 }
 
+void Ingressos_CPF::setIngressos_CPF(Ingresso novo_ingresso, CPF novo_cpf) throw (invalid_argument){
 
+    Codigo_de_Ingresso cod_ingresso;
+    novo_ingresso.getIngresso(&cod_ingresso);
+    int cod_ingresso_aux = cod_ingresso.getCodigo_de_Ingresso();
+
+    ingresso.setIngresso(cod_ingresso_aux);
+    cpf.setCPF(novo_cpf.getCPF());
+
+}
+
+void Ingressos_CPF::getIngressos_CPF(Ingresso *ingresso_f, CPF *cpf_f){
+
+    Codigo_de_Ingresso cod_ingresso;
+    this->ingresso.getIngresso(&cod_ingresso);
+    ingresso_f->setIngresso(cod_ingresso.getCodigo_de_Ingresso());
+    cpf_f->setCPF(this->cpf.getCPF());
+}
+/*
+void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
+
+    cpf_f->setCPF(this->cpf.getCPF());
+    senha_f->setSenha(this->senha.getSenha());
+
+    return;
+
+}
+*/
