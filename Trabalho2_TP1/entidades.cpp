@@ -64,7 +64,7 @@ void Cartao_de_credito::getCartao_de_credito(Numero_Cartao_Credito *numero_f, Co
 
 
 void Evento::setEvento(int novo_codigo, string novo_nome, string novo_cidade, string novo_estado,
-                int novo_classe, string novo_faixa) throw (invalid_argument){
+                int novo_classe, string novo_faixa, long long int novo_cpf) throw (invalid_argument){
 
     codigo.setCodigo_de_Evento(novo_codigo);
     nome.setNome_de_Evento(novo_nome);
@@ -72,11 +72,12 @@ void Evento::setEvento(int novo_codigo, string novo_nome, string novo_cidade, st
     estado.setEstado(novo_estado);
     classe.setClasse_Evento(novo_classe);
     faixa.setFaixa_Etaria(novo_faixa);
+    cpf_dono.setCPF(novo_cpf);
 
 }
 
 void Evento::getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidade *cidade_f, Estados_Brasileiros *estado_f,
-                   Classe_Evento *classe_f, Faixa_Etaria *faixa_f){
+                   Classe_Evento *classe_f, Faixa_Etaria *faixa_f, CPF *cpf_f){
 
     codigo_f->setCodigo_de_Evento(this->codigo.getCodigo_de_Evento());
     nome_f->setNome_de_Evento(this->nome.getNome_de_Evento());
@@ -84,6 +85,8 @@ void Evento::getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidad
     estado_f->setEstado(this->estado.getEstado());
     classe_f->setClasse_Evento(this->classe.getClasse_Evento());
     faixa_f->setFaixa_Etaria(this->faixa.getFaixa_Etaria());
+    cpf_f->setCPF(cpf_dono.getCPF());
+
 
     return;
 

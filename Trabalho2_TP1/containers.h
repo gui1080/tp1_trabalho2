@@ -35,9 +35,10 @@ public:
 
     // Metodos por meio dos quais sao solicitados os servicos.
 
-    ResultadoEvento incluir(Evento);
+    bool incluir(Evento);
     // (a fazer:) // ResultadoEvento remover(Codigo_de_Evento);
     //ResultadoEvento pesquisar(Codigo_de_Evento);
+    bool achar_evento_em_cidade(Cidade);
     bool mostrar();
 };
 

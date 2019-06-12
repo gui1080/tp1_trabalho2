@@ -160,6 +160,7 @@ private:
     Estados_Brasileiros estado;
     Classe_Evento classe;
     Faixa_Etaria faixa;
+    CPF cpf_dono;
 
 public:
 
@@ -170,7 +171,7 @@ public:
      *
      */
     void setEvento(int novo_codigo, string novo_nome, string novo_cidade, string novo_estado,
-                int novo_classe, string novo_faixa) throw (invalid_argument);
+                int novo_classe, string novo_faixa, long long int novo_cpf) throw (invalid_argument);
 
     /**
      * Obtém os dados do Evento.
@@ -179,7 +180,7 @@ public:
      *
      */
     void getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidade *cidade_f, Estados_Brasileiros *estado_f,
-                   Classe_Evento *classe_f, Faixa_Etaria *faixa_f);
+                   Classe_Evento *classe_f, Faixa_Etaria *faixa_f, CPF *cpf_f);
 };
 
 

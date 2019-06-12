@@ -109,7 +109,7 @@ ResultadoUsuario ContainerUsuario::pesquisar(CPF cpf){
 
 //////////////////////////////////////////EVENTOS/////////////////////////////////////////////////////////////
 
-ResultadoEvento ContainerEvento::incluir(Evento evento){
+bool ContainerEvento::incluir(Evento evento){
 
     ResultadoEvento resultado;
 
@@ -121,12 +121,13 @@ ResultadoEvento ContainerEvento::incluir(Evento evento){
     Estados_Brasileiros estados_br_aux;
     Classe_Evento classe_de_evento_aux;
     Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_aux;
 
     int resultado_cod_evento_incluir;
 
     // a chave vai ser o cpf
 
-    evento.getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux);
+    evento.getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
 
     int chave = codigo_de_evento_aux.getCodigo_de_Evento();
     //cout << "chave eh: " << chave << "\n";
@@ -135,7 +136,7 @@ ResultadoEvento ContainerEvento::incluir(Evento evento){
 
     for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
-       elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux);
+       elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
        resultado_cod_evento_incluir = codigo_de_evento_aux.getCodigo_de_Evento();
 
         if (resultado_cod_evento_incluir == chave){
@@ -143,7 +144,7 @@ ResultadoEvento ContainerEvento::incluir(Evento evento){
 
             resultado.setValor(Resultado::FALHA);
             cout << "evento ja cadastrado" << "\n\n";
-            return resultado;
+            return false;
         }
     }
 
@@ -152,7 +153,7 @@ ResultadoEvento ContainerEvento::incluir(Evento evento){
     container.push_back(evento);
     resultado.setValor(Resultado::SUCESSO);
     cout << "evento cadastrado com sucesso" << "\n\n";
-    return resultado;
+    return true;
 
 }
 
@@ -164,6 +165,7 @@ bool ContainerEvento::mostrar(){
     Estados_Brasileiros estados_br_aux;
     Classe_Evento classe_de_evento_aux;
     Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_aux;
 
     int cod_evento_mostrar;
     string nome_evento_mostrar;
@@ -171,13 +173,14 @@ bool ContainerEvento::mostrar(){
     string estados_br_mostrar;
     int classe_de_evento_mostrar;
     string faixa_etaria_mostrar;
+    long long int cpf_mostrar;
 
     // ver os elementos.
     cout << "Eventos disponiveis:\n" <<endl;
 
     for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
-        elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux);
+        elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
 
         cod_evento_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
         nome_evento_mostrar = nome_de_evento_aux.getNome_de_Evento();
@@ -185,6 +188,7 @@ bool ContainerEvento::mostrar(){
         estados_br_mostrar = estados_br_aux.getEstado();
         classe_de_evento_mostrar = classe_de_evento_aux.getClasse_Evento();
         faixa_etaria_mostrar = faixa_etaria_aux.getFaixa_Etaria();
+        cpf_mostrar = cpf_aux.getCPF();
 
         cout << "Codigo de Evento: ";
         cout << cod_evento_mostrar << endl;
@@ -198,6 +202,8 @@ bool ContainerEvento::mostrar(){
         cout << classe_de_evento_mostrar <<endl;
         cout << "Faixa Estaria: ";
         cout << faixa_etaria_mostrar << endl;
+        cout << "CPF de quem disponibiliza o evento: ";
+        cout << cpf_mostrar << endl;
         cout << "\n" << endl;
     }
 
@@ -205,6 +211,75 @@ bool ContainerEvento::mostrar(){
     return true;
 
 }
+
+bool ContainerEvento::achar_evento_em_cidade(Cidade cidade){
+
+    //int achamos_cidade = 0;
+
+    Codigo_de_Evento codigo_de_evento_aux;
+    Nome_de_Evento nome_de_evento_aux;
+    Cidade cidade_aux;
+    Estados_Brasileiros estados_br_aux;
+    Classe_Evento classe_de_evento_aux;
+    Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_aux;
+
+    int cod_evento_mostrar;
+    string nome_evento_mostrar;
+    string cidade_mostrar;
+    string estados_br_mostrar;
+    int classe_de_evento_mostrar;
+    string faixa_etaria_mostrar;
+    long long int cpf_mostrar;
+
+    string cidade_chave;
+    string cidade_atual;
+    cidade_chave = cidade.getCidade();
+
+    for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+        elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
+        cidade_atual = cidade_aux.getCidade();
+
+        if(cidade_chave != cidade_atual){
+            //if(achamamos_cidade == 0){
+              //  cout << "Achamos estes eventos na cidade desejada: \n" << endl;    //primeira ocorrencia
+                //achamos_cidade = 1;
+            //}
+            //else{
+
+                cod_evento_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
+                nome_evento_mostrar = nome_de_evento_aux.getNome_de_Evento();
+                cidade_mostrar = cidade_aux.getCidade();
+                estados_br_mostrar = estados_br_aux.getEstado();
+                classe_de_evento_mostrar = classe_de_evento_aux.getClasse_Evento();
+                faixa_etaria_mostrar = faixa_etaria_aux.getFaixa_Etaria();
+                cpf_mostrar = cpf_aux.getCPF();
+
+                cout << "Codigo de Evento: ";
+                cout << cod_evento_mostrar << endl;
+                cout << "Nome do Evento: ";
+                cout << nome_evento_mostrar <<endl;
+                cout << "Cidade: ";
+                cout << cidade_mostrar << endl;
+                cout << "Estado Brasileiro onde ocorre o Evento: ";
+                cout << estados_br_mostrar << endl;
+                cout << "Classe de Evento: ";
+                cout << classe_de_evento_mostrar <<endl;
+                cout << "Faixa Estaria: ";
+                cout << faixa_etaria_mostrar << endl;
+                cout << "CPF de quem disponibiliza o evento: ";
+                cout << cpf_mostrar << endl;
+                cout << "\n" << endl;
+
+            }
+        }
+
+
+}
+
+
+//////////////////////////////////////////APRESENTACOES/////////////////////////////////////////////////////////////
 
 bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
 

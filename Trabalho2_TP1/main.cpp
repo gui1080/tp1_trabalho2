@@ -41,7 +41,7 @@ int main(){
     ResultadoUsuario resultado;
     ContainerUsuario container;
 
-    ResultadoEvento resultado_e;
+    bool resultado_e;
     ContainerEvento container_e;
 
     ContainerApresentacoes container_ap;
@@ -51,9 +51,9 @@ int main(){
     std::cout.setstate(std::ios_base::failbit);       // essa linha "bloqueia" os prints no comeco do programa
 
     Evento evento_padrao_1;
-    Apresentacao apresentacao_padrao_1, apresentacao_padrao_1_2, apresentacao_padrao_1_3;
+    Apresentacao apresentacao_padrao_1, apresentacao_padrao_1_2, apresentacao_padrao_1_3;       // CPF padrao = 79410739276
 
-    evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L");
+    evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L", 79410739276);
     apresentacao_padrao_1.setApresentacao(143, "100410", "13:45", 54, 5, 79);
     apresentacao_padrao_1_2.setApresentacao(113, "110610", "11:30", 78, 4, 100);
     apresentacao_padrao_1_3.setApresentacao(123, "091010", "15:15", 100, 2, 50);
@@ -65,20 +65,23 @@ int main(){
     resultado_ap = container_ap.incluir(apresentacao_padrao_1_3);
 
     Evento evento_padrao_2;
-    evento_padrao_2.setEvento(132, "Black Sabbath Tour!", "Rio de Janeiro", "RJ", 4, "14");
+    evento_padrao_2.setEvento(132, "Black Sabbath Tour!", "Rio de Janeiro", "RJ", 4, "14", 79410739276);
     resultado_e = container_e.incluir(evento_padrao_2);
 
     Evento evento_padrao_3;
-    evento_padrao_3.setEvento(984, "Hamlet, por Shakespeare", "Sao Paulo", "SP", 1, "12");
+    evento_padrao_3.setEvento(984, "Hamlet, por Shakespeare", "Sao Paulo", "SP", 1, "12", 79410739276);
     resultado_e = container_e.incluir(evento_padrao_3);
 
     Evento evento_padrao_4;
-    evento_padrao_4.setEvento(923, "Jota Quest Acustico", "Sao Paulo", "SP", 3, "L");
+    evento_padrao_4.setEvento(923, "Jota Quest Acustico", "Sao Paulo", "SP", 3, "L", 79410739276);
     resultado_e = container_e.incluir(evento_padrao_4);
 
     std::cout.clear();
+
 //--------------------------------------------INICIALIZANDO O USUÁRIO--------------------------------------------------------
+
     Usuario usuario1;
+
 //-------------------------------------------- TESTES --------------------------------------
 
     Container_Apresentacoes container_ap_cpf;
