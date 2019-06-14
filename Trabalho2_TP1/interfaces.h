@@ -46,15 +46,15 @@ public:
 class ISUsuario {
 public:
 
-    virtual bool Cadastrar(Usuario, Cartao_de_credito) throw(runtime_error) = 0;
-    virtual bool Remover(Usuario) throw(runtime_error) = 0;
-    virtual bool Editar(Usuario) throw(runtime_error) = 0;
+    //virtual bool Cadastrar(Usuario, Cartao_de_credito) throw(runtime_error) = 0;
+    //virtual bool Remover(Usuario) throw(runtime_error) = 0;
+    //virtual bool Editar(Usuario) throw(runtime_error) = 0;
 
-    virtual bool Cadastrar_evento(Evento) throw(runtime_error) = 0;
-    virtual bool Remover_evento(Evento) throw(runtime_error) = 0;
-    virtual bool Editar_evento(Evento) throw(runtime_error) = 0;
+    //virtual bool Cadastrar_evento(Evento) throw(runtime_error) = 0;
+    //virtual bool Remover_evento(Evento) throw(runtime_error) = 0;
+    //virtual bool Editar_evento(Evento) throw(runtime_error) = 0;
 
-    virtual bool Mostrar_vendas() throw(runtime_error) = 0;
+    //virtual bool Mostrar_vendas() throw(runtime_error) = 0;
 
     virtual ~ISUsuario(){}
 };

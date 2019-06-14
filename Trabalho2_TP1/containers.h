@@ -23,6 +23,23 @@ public:
     ResultadoUsuario pesquisar(CPF);
 };
 
+class ContainerCartao_de_credito{
+
+private:
+
+    // Refer�ncia para o container.
+
+    list<Cartao_de_credito> container;
+
+public:
+
+    // Metodos por meio dos quais sao solicitados os servicos.
+
+    ResultadoCartao_de_credito incluir(Cartao_de_credito);
+    ResultadoCartao_de_credito remover(Cartao_de_credito);
+    ResultadoCartao_de_credito pesquisar(CPF);
+};
+
 class ContainerEvento{
 
 private:
@@ -80,9 +97,9 @@ public:
     Ingressos_CPF pesquisar(Codigo_de_Ingresso ingresso);
     bool mostrar();
     void setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
-                int novo_sala, int novo_disponibilidade, int novo_codigo_de_evento) throw (invalid_argument);
+                int novo_sala, int novo_disponibilidade) throw (invalid_argument);
     void getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
-                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f);
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f);
 };
 
 

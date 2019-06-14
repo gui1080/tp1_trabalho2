@@ -43,6 +43,7 @@ class CntrIUAutenticacao : public IUAutenticacao{
     ISAutenticacao *cntrISAutenticacao;
 
   public:
+    Usuario Tela_login() throw(runtime_error);
     void setCntrISAutenticacao(ISAutenticacao *);
     bool executar_autenticacao(CPF cpf) throw(runtime_error);
 };
@@ -54,8 +55,8 @@ void inline CntrIUAutenticacao::setCntrISAutenticacao(ISAutenticacao *cntrISAute
 class CntrISAutenticacao : public ISAutenticacao{
 
   public:
-    bool Autenticar(ContainerUsuario container_susuario, Usuario usuario) throw(runtime_error);
-    void Mostrar_Menu();
+    bool Autenticar(ContainerUsuario *container_usuario, Usuario usuario) throw(runtime_error);
+    void Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito);
 };
 
 class CntrIUUsuario : public IUUsuario{
@@ -68,9 +69,17 @@ class CntrIUUsuario : public IUUsuario{
     void setCntrISUsuario(ISUsuario *);
 
     Usuario Criar_usuario() throw(runtime_error);
+    Cartao_de_credito Criar_cartao_de_credito(Usuario usuario) throw(runtime_error);
     Usuario Menu_Edicao_usuario();
     Evento  Menu_Edicao_evento();
     Apresentacao Menu_Edicao_apresentacao();
+
+};
+
+class CntrISUsuario : public ISUsuario{
+
+  public:
+    bool Cadastrar(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito) throw(runtime_error);
 
 };
 

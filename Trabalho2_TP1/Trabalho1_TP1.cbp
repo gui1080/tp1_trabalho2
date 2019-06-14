@@ -38,6 +38,7 @@
 		<Unit filename="containers.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="controladoras.cpp" />
 		<Unit filename="dominios.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -50,6 +51,7 @@
 		<Unit filename="funcoes_auxiliares.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="interfaces.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="resultados.cpp">
 			<Option target="&lt;{~None~}&gt;" />

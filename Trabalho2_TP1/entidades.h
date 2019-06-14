@@ -116,6 +116,7 @@ private:
     Numero_Cartao_Credito numero;
     Codigo_de_Seguranca_Cartao_Credito codigo_cartao;
     Data_Validade_Cartao_Credito data;
+    CPF cpf_dono;
 
 
 public:
@@ -126,7 +127,7 @@ public:
      * @param long long int, int e string.
      *
      */
-    void setCartao_de_credito(long long int numero_f, int codigo_cartao_f, string data_f) throw (invalid_argument);
+    void setCartao_de_credito(long long int numero_f, int codigo_cartao_f, string data_f, long long int cpf_dono_f) throw (invalid_argument);
 
     /**
      * Obtém os dados do Cartão de Crédito.
@@ -134,7 +135,7 @@ public:
      * @return Número de cartão de crédito, código de segurança e sua validade.
      *
      */
-    void getCartao_de_credito(Numero_Cartao_Credito *numero_f, Codigo_de_Seguranca_Cartao_Credito *codigo_cartao_f, Data_Validade_Cartao_Credito *data_f);
+    void getCartao_de_credito(Numero_Cartao_Credito *numero_f, Codigo_de_Seguranca_Cartao_Credito *codigo_cartao_f, Data_Validade_Cartao_Credito *data_f, CPF *cpf_dono_f);
 
 };
 
@@ -205,7 +206,6 @@ protected:
     Preco preco;
     Numero_de_Sala sala;
     Disponibilidade disponibilidade;
-    Codigo_de_Evento codigo_de_evento;
 
 public:
 
@@ -216,7 +216,7 @@ public:
      *
      */
     void setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
-                int novo_sala, int novo_disponibilidade, int novo_codigo_evento) throw (invalid_argument);
+                int novo_sala, int novo_disponibilidade) throw (invalid_argument);
 
     /**
      * Obtém os dados do Evento.
@@ -225,7 +225,7 @@ public:
      *
      */
     void getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
-                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f);
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f);
 };
 
 
@@ -264,6 +264,22 @@ public:
     Usuario getUsuario() const {
         return usuario;
     }
+};
+
+class ResultadoCartao_de_credito:public Resultado {
+
+private:
+    Cartao_de_credito cartao_de_credito;
+
+public:
+
+    void setCartao_de_credito(const Cartao_de_credito &cartao){
+        this->cartao_de_credito = cartao_de_credito;
+    }
+
+    Cartao_de_credito getCartao_de_credito() const {
+        return cartao_de_credito;
+        }
 };
 
 class ResultadoEvento:public Resultado {
