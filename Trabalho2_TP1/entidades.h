@@ -205,6 +205,7 @@ protected:
     Preco preco;
     Numero_de_Sala sala;
     Disponibilidade disponibilidade;
+    Codigo_de_Evento codigo_de_evento;
 
 public:
 
@@ -215,7 +216,7 @@ public:
      *
      */
     void setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
-                int novo_sala, int novo_disponibilidade) throw (invalid_argument);
+                int novo_sala, int novo_disponibilidade, int novo_codigo_evento) throw (invalid_argument);
 
     /**
      * Obtém os dados do Evento.
@@ -224,7 +225,7 @@ public:
      *
      */
     void getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
-                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f);
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f);
 };
 
 

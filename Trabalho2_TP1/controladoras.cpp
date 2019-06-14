@@ -6,28 +6,28 @@ bool CntrIUAutenticacao::executar_autenticacao(CPF cpf) throw(runtime_error) {
 
 bool CntrISAutenticacao::Autenticar(ContainerUsuario container_usuario, Usuario usuario) throw(runtime_error){
 
-bool resultado;
-CPF cpf_aux;
-Senha senha_aux;
-ResultadoUsuario resultado_usuario;
+    bool resultado;
+    CPF cpf_aux;
+    Senha senha_aux;
+    ResultadoUsuario resultado_usuario;
 
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
-resultado_usuario = container_usuario.pesquisar(cpf_aux);
+    resultado_usuario = container_usuario.pesquisar(cpf_aux);
 
-if(resultado_usuario.getValor() == false){
+    if(resultado_usuario.getValor() == false){
 
-    cout << "Usuario nao cadastrado\n";
+        cout << "Usuario nao cadastrado\n";
 
-    return false;
+        return false;
 
-} else if(resultado_usuario.getValor() == true){
+    } else if(resultado_usuario.getValor() == true){
 
-cout << "usuario encontrado\n";
+    cout << "usuario encontrado\n";
 
-    return true;
+        return true;
 
-}
+    }
 
 }
 
@@ -71,23 +71,23 @@ void CntrISAutenticacao::Mostrar_Menu(){
 
 Usuario CntrIUUsuario::Criar_usuario() throw(runtime_error){
 
-Usuario usuario_aux;
-CPF cpf_aux;
-Senha senha_aux;
+    Usuario usuario_aux;
+    CPF cpf_aux;
+    Senha senha_aux;
 
-usuario_aux.setUsuario(29700582191, "Pao123");
-usuario_aux.getUsuario(&cpf_aux, &senha_aux);
+    usuario_aux.setUsuario(29700582191, "Pao123");
+    usuario_aux.getUsuario(&cpf_aux, &senha_aux);
 
-cout << "Seu CPF e: " << cpf_aux.getCPF() << "\n";
-cout << "Sua senha e: " << senha_aux.getSenha() << "\n\n";
+    cout << "Seu CPF e: " << cpf_aux.getCPF() << "\n";
+    cout << "Sua senha e: " << senha_aux.getSenha() << "\n\n";
 
-return usuario_aux;
+    return usuario_aux;
 
 }
 
 Apresentacao CntrIUUsuario::Menu_Edicao_apresentacao(){
 
-Apresentacao apresentacao;
+    Apresentacao apresentacao;
 
 }
 

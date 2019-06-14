@@ -7,7 +7,8 @@ int menu_tela_inicial(int *escolha_inicial){
     cout << "----------    Criar usuario: Digite 1 ----------------" << endl;
     cout << "----------     Fazer login:  Digite 2 ----------------"  << endl;
     cout << "----  Apenas ver os eventos disponiveis: Digite 3  ---" << endl;
-    cout << "---------  Fechar o software: Digite 4 ---------------" << endl;
+    cout << "----------  Se descadastrar: Digite 4 ---------------" << endl;
+    cout << "---------  Fechar o software: Digite 5 ---------------" << endl;
     cout << "------------------------------------------------------\n" << endl;
 
     cin >> *escolha_inicial;
