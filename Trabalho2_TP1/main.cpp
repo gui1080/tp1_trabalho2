@@ -15,6 +15,7 @@
 #include "funcoes_auxiliares.cpp"
 #include "containers.cpp"
 #include "containers.h"
+#include "controladoras.h"
 
 /*
 Feito por:
@@ -32,6 +33,7 @@ int main(){
 
     system("Color 0A");
 
+    /*
     int escolha_inicial = 0;
     bool mostra_evento;
     bool mostra_apresentacao;
@@ -211,6 +213,25 @@ int main(){
         }
     }
 
+
+    return 0;
+    */
+
+    CntrGeral cntrGeral;
+    CntrIUAutenticacao cntrIUAutenticacao;
+    CntrISAutenticacao cntrISAutenticacao;
+    //cntrISUsuario cntrISUsuario;
+    CntrIUUsuario cntrIUUsuario;
+
+    cntrGeral.setCntrIUAutenticacao(&cntrIUAutenticacao);
+    cntrGeral.setCntrIUUsuario(&cntrIUUsuario);
+
+    cntrIUAutenticacao.setCntrISAutenticacao(&cntrISAutenticacao);
+    //cntrIUUsuario.setCntrISUsuario(&cntrISUsuario);
+
+    cntrIUUsuario.Criar_usuario();
+
+    cntrISAutenticacao.Mostrar_Menu();
 
     return 0;
 }
