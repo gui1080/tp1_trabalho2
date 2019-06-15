@@ -37,7 +37,7 @@ int main(){
     int escolha_inicial = 0;
     bool mostra_evento;
     bool mostra_apresentacao;
-
+    */
 //-----------------------------------CONTAINERS-----------------------------------------------------------------
 
     ResultadoUsuario resultado;
@@ -56,32 +56,42 @@ int main(){
     Apresentacao apresentacao_padrao_1, apresentacao_padrao_1_2, apresentacao_padrao_1_3;       // CPF padrao = 79410739276
 
     evento_padrao_1.setEvento(645, "Hatsune Miku Live!", "Brasilia", "DF", 4, "L", 79410739276);
-    apresentacao_padrao_1.setApresentacao(143, "100410", "13:45", 54, 5, 79);
-    apresentacao_padrao_1_2.setApresentacao(113, "110610", "11:30", 78, 4, 100);
-    apresentacao_padrao_1_3.setApresentacao(123, "091010", "15:15", 100, 2, 50);
+    apresentacao_padrao_1.setApresentacao(143, "100410", "13:45", 54, 5, 79, 645);
+    apresentacao_padrao_1_2.setApresentacao(113, "110610", "11:30", 78, 4, 100, 645);
+    apresentacao_padrao_1_3.setApresentacao(123, "091010", "15:15", 100, 2, 50, 645);
 
     resultado_e = container_e.incluir(evento_padrao_1);
     resultado_ap = container_ap.incluir(apresentacao_padrao_1);
     resultado_ap = container_ap.incluir(apresentacao_padrao_1_2);
-
     resultado_ap = container_ap.incluir(apresentacao_padrao_1_3);
 
     Evento evento_padrao_2;
+    Apresentacao apresentacao_padrao_2, apresentacao_padrao_2_2;
     evento_padrao_2.setEvento(132, "Black Sabbath Tour!", "Rio de Janeiro", "RJ", 4, "14", 79410739276);
+    apresentacao_padrao_2.setApresentacao(143, "100416", "13:45", 54, 5, 79, 645);
+    apresentacao_padrao_2_2.setApresentacao(143, "100417", "13:45", 54, 5, 79, 645);
     resultado_e = container_e.incluir(evento_padrao_2);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_2);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_2_2);
 
     Evento evento_padrao_3;
-    evento_padrao_3.setEvento(984, "Hamlet, por Shakespeare", "Sao Paulo", "SP", 1, "12", 79410739276);
+    Apresentacao apresentacao_padrao_3;
+    evento_padrao_3.setEvento(984, "Hamlet", "Sao Paulo", "SP", 1, "12", 79410739276);
+    apresentacao_padrao_3.setApresentacao(143, "100418", "13:45", 54, 5, 79, 645);
     resultado_e = container_e.incluir(evento_padrao_3);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_3);
 
     Evento evento_padrao_4;
-    evento_padrao_4.setEvento(923, "Jota Quest Acustico", "Sao Paulo", "SP", 3, "L", 79410739276);
+    Apresentacao apresentacao_padrao_4;
+    evento_padrao_4.setEvento(623, "Jota Quest Acustico", "Sao Paulo", "SP", 3, "L", 79410739276);
+    apresentacao_padrao_4.setApresentacao(143, "100419", "13:45", 54, 5, 79, 645);
     resultado_e = container_e.incluir(evento_padrao_4);
+    resultado_ap = container_ap.incluir(apresentacao_padrao_4);
 
     std::cout.clear();
 
 //--------------------------------------------INICIALIZANDO O USUÁRIO--------------------------------------------------------
-
+    /*
     Usuario usuario1;
 
 //-------------------------------------------- TESTES --------------------------------------
@@ -215,6 +225,7 @@ int main(){
 
     return 0;
     */
+            cout << "\n";
 
     CntrGeral cntrGeral;
     CntrIUAutenticacao cntrIUAutenticacao;
@@ -233,6 +244,10 @@ int main(){
     ContainerUsuario container_usuario;
     ContainerCartao_de_credito container_cartao_de_credito;
 
+    //ContainerEvento container_e;
+
+    //ContainerApresentacoes container_ap;
+
     //usuario_cliente = cntrIUUsuario.Criar_usuario();
     //cartao_de_credito_cliente = cntrIUUsuario.Criar_cartao_de_credito(usuario_cliente);
 
@@ -247,7 +262,7 @@ int main(){
     cout << "------- Faca o login para mais opcoes ----------------" << endl;
     cout << "------------------------------------------------------" << endl;
     */
-    cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente);
+    cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
 
     //cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente);
     //cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente);

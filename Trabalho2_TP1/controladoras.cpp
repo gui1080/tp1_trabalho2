@@ -50,7 +50,7 @@ cout << "usuario encontrado\n";
 
 }
 
-void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario_cliente, Cartao_de_credito cartao_de_credito_cliente){
+void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario_cliente, Cartao_de_credito cartao_de_credito_cliente, ContainerEvento container_e, ContainerApresentacoes container_ap){
 
     CntrGeral cntrGeral;
     CntrIUAutenticacao cntrIUAutenticacao;
@@ -64,6 +64,7 @@ void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCa
     cntrIUAutenticacao.setCntrISAutenticacao(&cntrISAutenticacao);
     cntrIUUsuario.setCntrISUsuario(&cntrISUsuario);
 
+    bool mostra_evento, mostra_apresentacao;
     //CntrISAutenticacao cntrISAutenticacao;
     bool login = false;
 
@@ -103,11 +104,15 @@ void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCa
 
         case 3:
 
+            mostra_evento = container_e.mostrar();
+            mostra_apresentacao = container_ap.mostrar();
+
             break;
 
         case 4:
 
             cout << "Adeus e volte sempre!" << endl;
+            exit(0);
 
             break;
         }

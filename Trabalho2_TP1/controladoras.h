@@ -56,7 +56,7 @@ class CntrISAutenticacao : public ISAutenticacao{
 
   public:
     bool Autenticar(ContainerUsuario *container_usuario, Usuario usuario) throw(runtime_error);
-    void Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito);
+    void Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito, ContainerEvento container_e, ContainerApresentacoes container_ap);
 };
 
 class CntrIUUsuario : public IUUsuario{

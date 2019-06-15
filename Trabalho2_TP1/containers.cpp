@@ -266,6 +266,99 @@ bool ContainerEvento::incluir(Evento evento){
 
 }
 
+bool ContainerEvento::remover(Codigo_de_Evento codigo_ev){
+
+    Codigo_de_Evento codigo_de_evento_aux;
+    Nome_de_Evento nome_de_evento_aux;
+    Cidade cidade_aux;
+    Estados_Brasileiros estados_br_aux;
+    Classe_Evento classe_de_evento_aux;
+    Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_aux;
+    // a chave vai ser o cpf
+
+    int chave = codigo_ev.getCodigo_de_Evento();
+    int chave_atual;
+    //cout << "chave eh: " << chave << "\n";
+
+    // Procurar o elemento.
+
+    for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+       elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
+       chave_atual = codigo_de_evento_aux.getCodigo_de_Evento();
+
+        if (chave_atual == chave){
+            // Elemento localizado.
+
+            container.erase(elemento);
+            return true;
+        }
+    }
+
+    return false;
+
+}
+
+bool ContainerEvento::pesquisar(Codigo_de_Evento codigo_ev){
+
+    Codigo_de_Evento codigo_de_evento_aux;
+    Nome_de_Evento nome_de_evento_aux;
+    Cidade cidade_aux;
+    Estados_Brasileiros estados_br_aux;
+    Classe_Evento classe_de_evento_aux;
+    Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_aux;
+
+    int cod_evento_mostrar;
+    string nome_evento_mostrar;
+    string cidade_mostrar;
+    string estados_br_mostrar;
+    int classe_de_evento_mostrar;
+    string faixa_etaria_mostrar;
+    long long int cpf_mostrar;
+
+    int chave = codigo_ev.getCodigo_de_Evento();
+    // ver os elementos.
+
+    for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+        elemento->getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
+
+        cod_evento_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
+        nome_evento_mostrar = nome_de_evento_aux.getNome_de_Evento();
+        cidade_mostrar = cidade_aux.getCidade();
+        estados_br_mostrar = estados_br_aux.getEstado();
+        classe_de_evento_mostrar = classe_de_evento_aux.getClasse_Evento();
+        faixa_etaria_mostrar = faixa_etaria_aux.getFaixa_Etaria();
+        cpf_mostrar = cpf_aux.getCPF();
+
+        if(chave == cod_evento_mostrar){
+
+            cout << "Achamos um evento que satisfaz a sua busca!" << endl;
+            cout << "Codigo de Evento: ";
+            cout << cod_evento_mostrar << endl;
+            cout << "Nome do Evento: ";
+            cout << nome_evento_mostrar <<endl;
+            cout << "Cidade: ";
+            cout << cidade_mostrar << endl;
+            cout << "Estado Brasileiro onde ocorre o Evento: ";
+            cout << estados_br_mostrar << endl;
+            cout << "Classe de Evento: ";
+            cout << classe_de_evento_mostrar <<endl;
+            cout << "Faixa Estaria: ";
+            cout << faixa_etaria_mostrar << endl;
+            cout << "CPF de quem disponibiliza o evento: ";
+            cout << cpf_mostrar << endl;
+            cout << "\n" << endl;
+        }
+
+    }
+
+    return true;
+
+}
+
 bool ContainerEvento::mostrar(){
 
     Codigo_de_Evento codigo_de_evento_aux;
@@ -398,17 +491,18 @@ bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
     Preco preco_aux;
     Numero_de_Sala sala_aux;
     Disponibilidade disponibilidade_aux;
+    Codigo_de_Evento cod_evento_aux;
 
     bool resultado;
     string resultado_data;
     apresentacao.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
     string chave = data_aux.getData();
 
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
            elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
            resultado_data = data_aux.getData();
 
         if (resultado_data == chave){
@@ -438,17 +532,18 @@ bool ContainerApresentacoes::remover(Apresentacao apresentacao){
     Preco preco_aux;
     Numero_de_Sala sala_aux;
     Disponibilidade disponibilidade_aux;
+    Codigo_de_Evento cod_evento_aux;
 
     bool resultado;
     int resultado_codigo;
     apresentacao.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
     int chave = codigo_aux.getCodigo_de_Apresentacao();
 
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
            elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
            resultado_codigo = codigo_aux.getCodigo_de_Apresentacao();
 
         if (resultado_codigo == chave){
@@ -474,6 +569,9 @@ Apresentacao ContainerApresentacoes::pesquisar(Data data){
     Preco preco_aux;
     Numero_de_Sala sala_aux;
     Disponibilidade disponibilidade_aux;
+    Codigo_de_Evento cod_evento_aux;
+
+    int codigo_mostrar;
 
     Apresentacao resultado;
     string resultado_data;
@@ -482,16 +580,20 @@ Apresentacao ContainerApresentacoes::pesquisar(Data data){
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
            elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
            resultado_data = data_aux.getData();
+
+        codigo_mostrar = codigo_aux.getCodigo_de_Apresentacao();
 
         if (resultado_data == chave){
 
             // Elemento localizado.
 
             resultado.setApresentacao(codigo_aux.getCodigo_de_Apresentacao(), data_aux.getData(), horario_aux.getHorario(), preco_aux.getPreco(),
-            sala_aux.getNumero_de_Sala(), disponibilidade_aux.getDisponibilidade());
-            cout << "Apresentacao encontrada";
+            sala_aux.getNumero_de_Sala(), disponibilidade_aux.getDisponibilidade(), cod_evento_aux.getCodigo_de_Evento());
+            cout << "Apresentacao encontrada!" << endl;
+            cout << "Codigo da apresentacao: ";
+            cout << codigo_mostrar;
             cout << "\n";
             return resultado;
         }
@@ -510,6 +612,7 @@ bool ContainerApresentacoes::mostrar(){
     Preco preco_aux;
     Numero_de_Sala sala_aux;
     Disponibilidade disponibilidade_aux;
+    Codigo_de_Evento codigo_de_evento_aux;
 
     int cod_ap_mostrar;
     string data_mostrar;
@@ -517,6 +620,7 @@ bool ContainerApresentacoes::mostrar(){
     float preco_mostrar;
     int num_sala_mostrar;
     int disp_mostrar;
+    int cod_ev_mostrar;
 
     // ver os elementos.
     cout << "Apresentacoes disponiveis:\n" <<endl;
@@ -524,7 +628,7 @@ bool ContainerApresentacoes::mostrar(){
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
         elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
-                   &sala_aux, &disponibilidade_aux);
+                   &sala_aux, &disponibilidade_aux, &codigo_de_evento_aux);
 
         cod_ap_mostrar = codigo_aux.getCodigo_de_Apresentacao();
         data_mostrar = data_aux.getData();
@@ -532,6 +636,7 @@ bool ContainerApresentacoes::mostrar(){
         preco_mostrar = preco_aux.getPreco();
         num_sala_mostrar = sala_aux.getNumero_de_Sala();
         disp_mostrar = disponibilidade_aux.getDisponibilidade();
+        cod_ev_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
 
         cout << "Codigo de Apresentacao: ";
         cout << cod_ap_mostrar << endl;
@@ -545,6 +650,8 @@ bool ContainerApresentacoes::mostrar(){
         cout << num_sala_mostrar <<endl;
         cout << "Disponibilidade: ";
         cout << disp_mostrar << endl;
+        cout << "Evento ao qual a apresentacao esta relacionada: ";
+        cout << cod_ev_mostrar << endl;
         cout << "\n" << endl;
     }
 
@@ -552,7 +659,6 @@ bool ContainerApresentacoes::mostrar(){
     return true;
 
 }
-
 bool Container_Apresentacoes::incluir( Ingressos_CPF ingressos_cpf){
 
     int resultado_codigo, resultado_cpf;

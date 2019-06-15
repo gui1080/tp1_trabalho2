@@ -97,7 +97,7 @@ void Evento::getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidad
 
 
 void Apresentacao::setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
-                int novo_sala, int novo_disponibilidade) throw (invalid_argument){
+                int novo_sala, int novo_disponibilidade, int novo_codigo_evento) throw (invalid_argument){
 
     codigo.setCodigo_de_Apresentacao(novo_codigo);
     data.setData(novo_data);
@@ -105,11 +105,12 @@ void Apresentacao::setApresentacao(int novo_codigo, string novo_data, string nov
     preco.setPreco(novo_preco);
     sala.setNumero_de_Sala(novo_sala);
     disponibilidade.setDisponibilidade(novo_disponibilidade);
+    codigo_de_evento.setCodigo_de_Evento(novo_codigo_evento);
 
 }
 
 void Apresentacao::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
-                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f){
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f){
 
     codigo_f->setCodigo_de_Apresentacao(this->codigo.getCodigo_de_Apresentacao());
     data_f->setData(this->data.getData());
@@ -117,10 +118,10 @@ void Apresentacao::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_
     preco_f->setPreco(this->preco.getPreco());
     sala_f->setNumero_de_Sala(this->sala.getNumero_de_Sala());
     disponibilidade_f->setDisponibilidade(this->disponibilidade.getDisponibilidade());
+    codigo_de_evento_f->setCodigo_de_Evento(this->codigo_de_evento.getCodigo_de_Evento());
 
     return;
 }
-
 void Ingressos_CPF::setIngressos_CPF(Ingresso novo_ingresso, CPF novo_cpf) throw (invalid_argument){
 
     Codigo_de_Ingresso cod_ingresso;
@@ -149,7 +150,7 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
 }
 */
 void Container_Apresentacoes::setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
-                int novo_sala, int novo_disponibilidade) throw (invalid_argument){
+                int novo_sala, int novo_disponibilidade, int novo_codigo_de_evento) throw (invalid_argument){
 
     codigo.setCodigo_de_Apresentacao(novo_codigo);
     data.setData(novo_data);
@@ -157,11 +158,12 @@ void Container_Apresentacoes::setApresentacao(int novo_codigo, string novo_data,
     preco.setPreco(novo_preco);
     sala.setNumero_de_Sala(novo_sala);
     disponibilidade.setDisponibilidade(novo_disponibilidade);
+    codigo_de_evento.setCodigo_de_Evento(novo_codigo_de_evento);
 
 }
 
 void Container_Apresentacoes::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_f, Horario *horario_f, Preco *preco_f,
-                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f){
+                   Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f){
 
     codigo_f->setCodigo_de_Apresentacao(this->codigo.getCodigo_de_Apresentacao());
     data_f->setData(this->data.getData());
@@ -169,6 +171,7 @@ void Container_Apresentacoes::getApresentacao(Codigo_de_Apresentacao *codigo_f, 
     preco_f->setPreco(this->preco.getPreco());
     sala_f->setNumero_de_Sala(this->sala.getNumero_de_Sala());
     disponibilidade_f->setDisponibilidade(this->disponibilidade.getDisponibilidade());
+    codigo_de_evento_f->setCodigo_de_Evento(this->codigo_de_evento.getCodigo_de_Evento());
 
     return;
 }
