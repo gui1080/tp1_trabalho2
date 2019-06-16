@@ -56,7 +56,7 @@ class CntrISAutenticacao : public ISAutenticacao{
 
   public:
     bool Autenticar(ContainerUsuario *container_usuario, Usuario usuario) throw(runtime_error);
-    void Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito, ContainerEvento container_e, ContainerApresentacoes container_ap);
+    Usuario Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito, ContainerEvento container_e, ContainerApresentacoes container_ap);
 };
 
 class CntrIUUsuario : public IUUsuario{
@@ -68,8 +68,11 @@ class CntrIUUsuario : public IUUsuario{
 
     void setCntrISUsuario(ISUsuario *);
 
+    void Menu_Logado(Usuario usuario, ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, ContainerEvento *container_e);
     Usuario Criar_usuario() throw(runtime_error);
     Cartao_de_credito Criar_cartao_de_credito(Usuario usuario) throw(runtime_error);
+    Evento Menu_Criar_Evento(Usuario usuario) throw(runtime_error);
+    Apresentacao Menu_Criar_Apresentacao(Evento evento) throw(runtime_error);
     Usuario Menu_Edicao_usuario();
     Evento  Menu_Edicao_evento();
     Apresentacao Menu_Edicao_apresentacao();
@@ -80,6 +83,7 @@ class CntrISUsuario : public ISUsuario{
 
   public:
     bool Cadastrar(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito) throw(runtime_error);
+    bool Cadastrar_Evento(ContainerEvento *container_e, Evento evento);
 
 };
 

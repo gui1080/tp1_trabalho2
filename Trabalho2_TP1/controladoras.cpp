@@ -1,4 +1,5 @@
 #include "controladoras.h"
+#include <stdio.h>
 
 bool CntrIUAutenticacao::executar_autenticacao(CPF cpf) throw(runtime_error) {
 
@@ -50,7 +51,7 @@ cout << "usuario encontrado\n";
 
 }
 
-void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario_cliente, Cartao_de_credito cartao_de_credito_cliente, ContainerEvento container_e, ContainerApresentacoes container_ap){
+Usuario CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario_cliente, Cartao_de_credito cartao_de_credito_cliente, ContainerEvento container_e, ContainerApresentacoes container_ap){
 
     CntrGeral cntrGeral;
     CntrIUAutenticacao cntrIUAutenticacao;
@@ -98,6 +99,7 @@ void CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, ContainerCa
             usuario_cliente = cntrIUAutenticacao.Tela_login();
             if(cntrISAutenticacao.Autenticar(container_u, usuario_cliente) == true){
                   login = true;
+                  return usuario_cliente;
             }
 
             break;
@@ -213,5 +215,150 @@ if(resultado_usuario.getValor() == true && resultado_cartao_de_credito.getValor(
 } else {
 return false;
 }
+
+}
+
+void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u,
+                                ContainerCartao_de_credito *container_c, ContainerEvento *container_e){
+
+    int escolha;
+
+    CntrGeral cntrGeral;
+    CntrIUAutenticacao cntrIUAutenticacao;
+    CntrISAutenticacao cntrISAutenticacao;
+    CntrISUsuario cntrISUsuario;
+    CntrIUUsuario cntrIUUsuario;
+
+    cntrGeral.setCntrIUAutenticacao(&cntrIUAutenticacao);
+    cntrGeral.setCntrIUUsuario(&cntrIUUsuario);
+
+    cntrIUAutenticacao.setCntrISAutenticacao(&cntrISAutenticacao);
+    cntrIUUsuario.setCntrISUsuario(&cntrISUsuario);
+
+    ResultadoUsuario resultado_meus_dados;
+    ResultadoCartao_de_credito resultado_meu_cartao;
+
+    Usuario usuario_aux;
+    Evento evento_aux;
+    CPF cpf_aux;
+    Senha senha_aux;
+
+    usuario.getUsuario(&cpf_aux, &senha_aux);
+
+while(escolha != 8){
+
+    cout << "\n------------------------------------------------------" << endl;
+    cout << "--------  Escolha o que se deseja fazer: -------------" << endl;
+    cout << "------------------------------------------------------" << endl;
+    cout << "-------- Visualizar dados da conta: Digite 1 ---------" << endl;
+    cout << "----------     Editar conta:  Digite 2 ---------------"  << endl;
+    cout << "-------- Consultar apresentacoes: Digite 3 -----------" << endl;
+    cout << "----------- Cadastrar evento: Digite 4 ---------------" << endl;
+    cout << "-------- Editar evento cadastrado: Digite 5 ----------" << endl;
+    cout << "------------- Comprar Ingresso: Digite 6 -------------" << endl;
+    cout << "------- Visualizar minhas vendas: Digite 7 -----------" << endl;
+    cout << "-------------- Fazer logout: Digite 8 ----------------" << endl;
+    cout << "------------------------------------------------------\n" << endl;
+
+    cin >> escolha;
+
+    switch (escolha){
+
+    case 1:
+
+             cout << "------------------- MEU USUARIO ----------------------" << endl;
+             cout << "CPF: " << cpf_aux.getCPF() << endl;
+             cout << "Senha: " << senha_aux.getSenha() << endl;
+             cout << "------------- MEU CARTAO DE CREDITO ------------------" << endl;
+            //cout << "CPF: " << resultado_meus_dados.getUsuario();
+             cout << "------------- CODIGO DOS MEUS EVENTOS ----------------" << endl;
+             cout << "------- CODIGO DOS MEUS INGRESSOS COMPRADOS ----------" << endl;
+             cout << "------- CODIGO DOS MEUS INGRESSOS VENDIDOS -----------" << endl;
+
+            break;
+
+    case 2:
+
+            break;
+
+    case 3:
+
+            break;
+
+    case 4:
+
+            evento_aux = cntrIUUsuario.Menu_Criar_Evento(usuario);
+            cntrISUsuario.Cadastrar_Evento(container_e, evento_aux);
+            break;
+
+    case 5:
+
+            break;
+
+    case 6:
+
+            break;
+
+    case 7:
+
+            break;
+        }
+}
+}
+
+Evento CntrIUUsuario::Menu_Criar_Evento(Usuario usuario)throw(runtime_error){
+
+CPF cpf_aux;
+Senha senha_aux;
+
+usuario.getUsuario(&cpf_aux, &senha_aux);
+
+Evento evento_final;
+
+int codigo_evento;
+char nome_evento[21];
+char cidade_evento[16];
+char estado_evento[3];
+int classe_evento;
+char faixa_evento[3];
+long long int cpf_dono_evento;
+
+ cout << "\n------------------------------------------------------" << endl;
+    cout << "------------------  CRIAR EVENTO: --------------------" << endl;
+    cout << "------------------------------------------------------" << endl;
+    cout << "-------- DIGITE AS INFORMACOES PEDIDAS: --------------" << endl;
+    cout << "------------------------------------------------------" << endl;
+    cout << "--------------- Codigo do evento: --------------------" << endl;
+    cin >> codigo_evento;
+    cout << "---------------- Nome do evento: ---------------------" << endl;
+    cin >> nome_evento;
+    getchar();
+    cout << "---------------- Cidade do evento: -------------------" << endl;
+    cin >> cidade_evento;
+    getchar();
+    cout << "---------------- Estado do evento: -------------------" << endl;
+    cin >> estado_evento;
+    cout << "---------------- Classe do evento: -------------------" << endl;
+    cin >> classe_evento;
+    cout << "-------------- Faixa Etaria do evento: ---------------" << endl;
+    cin >> faixa_evento;
+    cout << "------------------------------------------------------\n" << endl;
+
+    evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_aux.getCPF());
+
+    return evento_final;
+}
+
+bool CntrISUsuario::Cadastrar_Evento(ContainerEvento *container_e, Evento evento){
+
+bool resultado;
+
+resultado = container_e->incluir(evento);
+
+return resultado;
+
+}
+
+Apresentacao CntrIUUsuario::Menu_Criar_Apresentacao(Evento evento) throw(runtime_error){
 
 }

@@ -88,6 +88,7 @@ int main(){
     resultado_e = container_e.incluir(evento_padrao_4);
     resultado_ap = container_ap.incluir(apresentacao_padrao_4);
 
+
     std::cout.clear();
 
 //--------------------------------------------INICIALIZANDO O USUÁRIO--------------------------------------------------------
@@ -262,9 +263,13 @@ int main(){
     cout << "------- Faca o login para mais opcoes ----------------" << endl;
     cout << "------------------------------------------------------" << endl;
     */
-    cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
 
-    //cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente);
-    //cntrISAutenticacao.Mostrar_Menu(&container_usuario, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente);
+    while(1){
+
+    usuario_cliente = cntrISAutenticacao.Mostrar_Menu(&container, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
+    cntrIUUsuario.Menu_Logado(usuario_cliente, &container_usuario, &container_cartao_de_credito, &container_e);
+
+    }
+
     return 0;
 }
