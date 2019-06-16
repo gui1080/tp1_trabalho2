@@ -30,15 +30,22 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
 
 }
 
-void Ingresso::setIngresso(int novo_codigo) throw (invalid_argument){
+void Ingresso::setIngresso(int novo_codigo, int novo_codigo_ap, long long int novo_cpf_fornecedor, long long int novo_cpf_comprador) throw (invalid_argument){
 
 codigo.setCodigo_de_Ingresso(novo_codigo);
+codigo_ap.setCodigo_de_Apresentacao(novo_codigo_ap);
+cpf_fornecedor.setCPF(novo_cpf_fornecedor);
+cpf_comprador.setCPF(novo_cpf_comprador);
 
 }
 
-void Ingresso::getIngresso(Codigo_de_Ingresso *codigo_f){
+void Ingresso::getIngresso(Codigo_de_Ingresso *codif, Codigo_de_Apresentacao *cod_ap, CPF *cpf_f, CPF *cpf_c){
 
-    codigo_f->setCodigo_de_Ingresso(this->codigo.getCodigo_de_Ingresso());
+    codif->setCodigo_de_Ingresso(this->codigo.getCodigo_de_Ingresso());
+    cod_ap->setCodigo_de_Apresentacao(this->codigo_ap.getCodigo_de_Apresentacao());
+    cpf_f->setCPF(this->cpf_fornecedor.getCPF());
+    cpf_c->setCPF(this->cpf_comprador.getCPF());
+
     return;
 }
 
@@ -122,6 +129,7 @@ void Apresentacao::getApresentacao(Codigo_de_Apresentacao *codigo_f, Data *data_
 
     return;
 }
+/*
 void Ingressos_CPF::setIngressos_CPF(Ingresso novo_ingresso, CPF novo_cpf) throw (invalid_argument){
 
     Codigo_de_Ingresso cod_ingresso;
@@ -140,6 +148,7 @@ void Ingressos_CPF::getIngressos_CPF(Ingresso *ingresso_f, CPF *cpf_f){
     ingresso_f->setIngresso(cod_ingresso.getCodigo_de_Ingresso());
     cpf_f->setCPF(this->cpf.getCPF());
 }
+*/
 /*
 void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
 
@@ -149,6 +158,7 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
     return;
 }
 */
+/*
 void Container_Apresentacoes::setApresentacao(int novo_codigo, string novo_data, string novo_horario, float novo_preco,
                 int novo_sala, int novo_disponibilidade, int novo_codigo_de_evento) throw (invalid_argument){
 
@@ -175,4 +185,4 @@ void Container_Apresentacoes::getApresentacao(Codigo_de_Apresentacao *codigo_f, 
 
     return;
 }
-
+*/

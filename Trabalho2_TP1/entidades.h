@@ -76,6 +76,9 @@ class Ingresso {
 private:
 
     Codigo_de_Ingresso codigo;
+    Codigo_de_Apresentacao codigo_ap;
+    CPF cpf_fornecedor;
+    CPF cpf_comprador;
 
 public:
 
@@ -85,7 +88,7 @@ public:
      * @param int
      *
      */
-    void setIngresso(int novo_codigo) throw (invalid_argument);
+    void setIngresso(int novo_codigo, int novo_codigo_ap, long long int novo_cpf_fornecedor, long long int novo_cpf_comprador) throw (invalid_argument);
 
     /**
      * Obtém os dados do Ingresso
@@ -93,7 +96,7 @@ public:
      * @return Código de Ingresso.
      *
      */
-    void getIngresso(Codigo_de_Ingresso *codif);
+    void getIngresso(Codigo_de_Ingresso *codif, Codigo_de_Apresentacao *cod_ap, CPF *cpf_f, CPF *cpf_c);
 
 };
 
@@ -298,6 +301,36 @@ public:
     }
 };
 
+class ResultadoApresentacao:public Resultado {
+
+private:
+    Apresentacao apresentacao;
+
+public:
+    void setApresentacao(const Apresentacao &apresentacao){
+        this->apresentacao = apresentacao;
+    }
+
+    Apresentacao getApresentacao() const {
+        return apresentacao;
+    }
+};
+
+class ResultadoIngresso:public Resultado {
+
+private:
+    Ingresso ingresso;
+
+public:
+    void setIngresso(const Ingresso &ingresso){
+        this->ingresso = ingresso;
+    }
+
+    Ingresso getIngresso() const {
+        return ingresso;
+    }
+};
+/*
 class Ingressos_CPF{
 
 private:
@@ -311,7 +344,8 @@ public:
     void setIngressos_CPF(Ingresso novo_ingresso, CPF novo_cpf) throw (invalid_argument);
     void getIngressos_CPF(Ingresso *ingresso_f, CPF *cpf_f);
 
-};
 
+};
+*/
 
 #endif // ENTIDADES_H_INCLUDED

@@ -55,6 +55,7 @@ public:
     bool incluir(Evento);
     bool remover(Codigo_de_Evento);
     bool pesquisar(Codigo_de_Evento);
+    ResultadoEvento pesquisar_Evento(Codigo_de_Evento);
     bool achar_evento_em_cidade(Cidade);
     bool mostrar();
 };
@@ -75,9 +76,10 @@ public:
     bool incluir(Apresentacao);
     bool remover(Apresentacao);
     Apresentacao pesquisar(Data);
+    ResultadoApresentacao pesquisar_Cod(Codigo_de_Apresentacao);
     bool mostrar();
 };
-
+/*
 class Container_Apresentacoes: public Apresentacao{
 
 private:
@@ -102,6 +104,23 @@ public:
                    Numero_de_Sala *sala_f, Disponibilidade *disponibilidade_f, Codigo_de_Evento *codigo_de_evento_f);
 
 };
+*/
+class ContainerIngresso{
 
+private:
+
+    // Refer�ncia para o container.
+
+    list<Ingresso> container;
+
+public:
+
+    // Metodos por meio dos quais sao solicitados os servicos.
+
+    ResultadoIngresso incluir(Ingresso);
+    ResultadoIngresso remover(Ingresso);
+    ResultadoIngresso pesquisar(Codigo_de_Ingresso);
+    void Mostrar_Compras_Usuario(CPF);
+};
 
 #endif // CONTAINERS_H_INCLUD

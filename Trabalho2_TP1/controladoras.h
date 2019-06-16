@@ -68,7 +68,8 @@ class CntrIUUsuario : public IUUsuario{
 
     void setCntrISUsuario(ISUsuario *);
 
-    void Menu_Logado(Usuario usuario, ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, ContainerEvento *container_e);
+    void Menu_Logado(Usuario usuario, ContainerUsuario *container_u, ContainerCartao_de_credito *container_c,
+                      ContainerEvento *container_e, ContainerApresentacoes *container_ap, ContainerIngresso *container_i);
     Usuario Criar_usuario() throw(runtime_error);
     Cartao_de_credito Criar_cartao_de_credito(Usuario usuario) throw(runtime_error);
     Evento Menu_Criar_Evento(Usuario usuario) throw(runtime_error);
@@ -84,11 +85,37 @@ class CntrISUsuario : public ISUsuario{
   public:
     bool Cadastrar(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito) throw(runtime_error);
     bool Cadastrar_Evento(ContainerEvento *container_e, Evento evento);
+    bool Cadastrar_Apresentacao(ContainerApresentacoes *container_ap, Apresentacao apresentacao);
+    void Mostrar_Compras(Usuario usuario, ContainerIngresso *container_i);
 
 };
 
 void inline CntrIUUsuario::setCntrISUsuario(ISUsuario *cntrISUsuario) {
     this->cntrISUsuario = cntrISUsuario;
+}
+
+
+class CntrIUVendas : public IUVendas{
+
+  private:
+    ISVendas *cntrISVendas;
+
+  public:
+
+    void setCntrISVendas(ISVendas *);
+    ResultadoIngresso Achar_Ingresso(Usuario usuario, ContainerEvento *container_e, ContainerApresentacoes *container_ap);
+
+};
+
+class CntrISVendas : public ISVendas{
+
+  public:
+    bool Comprar_Ingresso(Ingresso ingresso, ContainerIngresso *container_i);
+
+};
+
+void inline CntrIUVendas::setCntrISVendas(ISVendas *cntrISVendas) {
+    this->cntrISVendas = cntrISVendas;
 }
 
 #endif

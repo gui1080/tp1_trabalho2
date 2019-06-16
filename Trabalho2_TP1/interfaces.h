@@ -79,7 +79,7 @@ class IUVendas {
 public:
 
     //Disponibilidade eh a quantidade de ingressos a serem compradas pelo usuario
-    virtual void executar(CPF, Evento, Apresentacao, Disponibilidade) throw(runtime_error) = 0;
+    //virtual void executar(CPF, Evento, Apresentacao, Disponibilidade) throw(runtime_error) = 0;
 
     virtual void setCntrISVendas(ISVendas *) = 0;
 
@@ -89,7 +89,7 @@ public:
 class ISVendas {
 public:
 
-    virtual bool Comprar(Codigo_de_Apresentacao) throw(runtime_error) = 0;
+    //virtual bool Comprar(Codigo_de_Apresentacao) throw(runtime_error) = 0;
 
     virtual ~ISVendas(){}
 };

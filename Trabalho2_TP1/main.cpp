@@ -42,6 +42,7 @@ int main(){
 
     ResultadoUsuario resultado;
     ContainerUsuario container;
+    ContainerIngresso container_i;
 
     bool resultado_e;
     ContainerEvento container_e;
@@ -267,7 +268,7 @@ int main(){
     while(1){
 
     usuario_cliente = cntrISAutenticacao.Mostrar_Menu(&container, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
-    cntrIUUsuario.Menu_Logado(usuario_cliente, &container_usuario, &container_cartao_de_credito, &container_e);
+    cntrIUUsuario.Menu_Logado(usuario_cliente, &container_usuario, &container_cartao_de_credito, &container_e, &container_ap, &container_i);
 
     }
 

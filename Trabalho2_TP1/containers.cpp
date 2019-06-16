@@ -359,6 +359,47 @@ bool ContainerEvento::pesquisar(Codigo_de_Evento codigo_ev){
 
 }
 
+ResultadoEvento ContainerEvento::pesquisar_Evento(Codigo_de_Evento codigo_e){
+
+    // Procurar elemento.
+
+    ResultadoEvento resultado;
+
+    Codigo_de_Evento cod_evento_aux;
+    Nome_de_Evento nome_evento_aux;
+    Cidade cidade_aux;
+    Estados_Brasileiros estados_br_aux;
+    Classe_Evento classe_de_evento_aux;
+    Faixa_Etaria faixa_etaria_aux;
+    CPF cpf_f_aux;
+
+    int resultado_cod_evento;
+
+    resultado.setValor(Resultado::FALHA);
+
+    int chave = codigo_e.getCodigo_de_Evento();
+
+    for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getEvento(&cod_evento_aux, &nome_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_f_aux);
+           resultado_cod_evento = cod_evento_aux.getCodigo_de_Evento();
+
+        if (resultado_cod_evento == chave){
+
+            // Elemento localizado.
+            resultado.setEvento(*elemento);
+            resultado.setValor(Resultado::SUCESSO);
+            cout << "Evento encontrado";
+            cout << "\n";
+            return resultado;
+        }
+    }
+
+    cout << "Evento nao encontrado";
+    cout << "\n";
+    return resultado;
+}
+
 bool ContainerEvento::mostrar(){
 
     Codigo_de_Evento codigo_de_evento_aux;
@@ -494,18 +535,20 @@ bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
     Codigo_de_Evento cod_evento_aux;
 
     bool resultado;
-    string resultado_data;
+    int resultado_codigo;
+
     apresentacao.getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
                    &sala_aux, &disponibilidade_aux, &cod_evento_aux);
-    string chave = data_aux.getData();
+
+    int chave = codigo_aux.getCodigo_de_Apresentacao();
 
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
            elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
                    &sala_aux, &disponibilidade_aux, &cod_evento_aux);
-           resultado_data = data_aux.getData();
+           resultado_codigo = codigo_aux.getCodigo_de_Apresentacao();
 
-        if (resultado_data == chave){
+        if (resultado_codigo == chave){
             // Elemento localizado.
 
             resultado = false;
@@ -604,6 +647,49 @@ Apresentacao ContainerApresentacoes::pesquisar(Data data){
     return resultado;
 }
 
+ResultadoApresentacao ContainerApresentacoes::pesquisar_Cod(Codigo_de_Apresentacao codigo){
+
+    // Procurar elemento.
+
+    Codigo_de_Apresentacao codigo_aux;
+    Data data_aux;
+    Horario horario_aux;
+    Preco preco_aux;
+    Numero_de_Sala sala_aux;
+    Disponibilidade disponibilidade_aux;
+    Codigo_de_Evento cod_evento_aux;
+
+    int codigo_mostrar;
+
+    ResultadoApresentacao resultado;
+    int resultado_cod;
+    int chave = codigo.getCodigo_de_Apresentacao();
+
+    resultado.setValor(Resultado::FALHA);
+
+    for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getApresentacao(&codigo_aux, &data_aux, &horario_aux, &preco_aux,
+                   &sala_aux, &disponibilidade_aux, &cod_evento_aux);
+           resultado_cod = codigo_aux.getCodigo_de_Apresentacao();
+
+        if (resultado_cod == chave){
+
+            // Elemento localizado.
+
+            resultado.setApresentacao(*elemento);
+            resultado.setValor(Resultado::SUCESSO);
+            cout << "Apresentacao encontrada!" << endl;
+            cout << "\n";
+            return resultado;
+        }
+    }
+
+    cout << "Apresentacao nao encontrada";
+    cout << "\n";
+    return resultado;
+}
+
 bool ContainerApresentacoes::mostrar(){
 
     Codigo_de_Apresentacao codigo_aux;
@@ -659,6 +745,148 @@ bool ContainerApresentacoes::mostrar(){
     return true;
 
 }
+
+ResultadoIngresso ContainerIngresso::incluir(Ingresso ingresso){
+
+    ResultadoIngresso resultado;
+
+    Codigo_de_Ingresso codigo_i_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    CPF cpf_f_aux;
+    CPF cpf_c_aux;
+    Senha teste_senha;
+
+    int resultado_codigo_i;
+
+    resultado.setValor(Resultado::FALHA);
+
+    ingresso.getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+
+    int chave = codigo_i_aux.getCodigo_de_Ingresso();
+
+    for(list<Ingresso>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+           resultado_codigo_i = codigo_i_aux.getCodigo_de_Ingresso();
+
+        if (resultado_codigo_i == chave){
+
+            resultado.setValor(Resultado::FALHA);
+            cout << "Ingresso ja vendido" << "\n\n";
+            return resultado;
+        }
+    }
+
+    // Incluir o elemento no container.
+
+    container.push_back(ingresso);
+    resultado.setValor(Resultado::SUCESSO);
+    cout << "ingresso comprado com sucesso" << "\n\n";
+    return resultado;
+
+}
+
+ResultadoIngresso ContainerIngresso::remover(Ingresso ingresso){
+
+    // Procurar e remover um elemento.
+
+    ResultadoIngresso resultado;
+
+    Codigo_de_Ingresso codigo_i_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    CPF cpf_f_aux;
+    CPF cpf_c_aux;
+    Senha teste_senha;
+
+    int resultado_codigo_i;
+
+    resultado.setValor(Resultado::FALHA);
+
+    ingresso.getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+
+    int chave = codigo_i_aux.getCodigo_de_Ingresso();
+
+    for(list<Ingresso>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+           resultado_codigo_i = codigo_i_aux.getCodigo_de_Ingresso();
+
+        if (resultado_codigo_i == chave){
+        // Elemento localizado.
+
+            container.erase(elemento);
+            resultado.setValor(Resultado::SUCESSO);
+        }
+    }
+
+    return resultado;
+}
+
+ResultadoIngresso ContainerIngresso::pesquisar(Codigo_de_Ingresso codigo_i){
+
+    ResultadoIngresso resultado;
+
+    Codigo_de_Ingresso codigo_i_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    CPF cpf_f_aux;
+    CPF cpf_c_aux;
+    Senha teste_senha;
+
+    int resultado_codigo_i;
+
+    resultado.setValor(Resultado::FALHA);
+
+    int chave = codigo_i.getCodigo_de_Ingresso();
+
+    for(list<Ingresso>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+           resultado_codigo_i = codigo_i_aux.getCodigo_de_Ingresso();
+
+        if (resultado_codigo_i == chave){
+
+            // Elemento localizado.
+            resultado.setIngresso(*elemento);
+            resultado.setValor(Resultado::SUCESSO);
+            cout << "Ingresso encontrado";
+            cout << "\n";
+            return resultado;
+        }
+    }
+
+    cout << "Ingresso nao encontrado";
+    cout << "\n";
+    return resultado;
+
+}
+
+void ContainerIngresso::Mostrar_Compras_Usuario(CPF cpf_usuario){
+
+    Codigo_de_Ingresso codigo_i_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    CPF cpf_f_aux;
+    CPF cpf_c_aux;
+    Senha teste_senha;
+
+    long long int resultado_cpf;
+
+    long long int chave = cpf_usuario.getCPF();
+
+    for(list<Ingresso>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+           resultado_cpf = cpf_c_aux.getCPF();
+
+       if (resultado_cpf == chave){
+
+    cout << "------------------------------------------------------" << endl;
+    cout << "Codigo da apresentacao: " << codigo_i_aux.getCodigo_de_Ingresso() << endl;
+    cout << "------------------------------------------------------\n" << endl;
+
+        }
+    }
+}
+/*
 bool Container_Apresentacoes::incluir( Ingressos_CPF ingressos_cpf){
 
     int resultado_codigo, resultado_cpf;
@@ -758,3 +986,4 @@ Ingressos_CPF Container_Apresentacoes::pesquisar(Codigo_de_Ingresso codigo){
     cout << "\n\n";
     return resultado;
 }
+*/
