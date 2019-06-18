@@ -284,7 +284,6 @@ while(escolha != 8){
              cout << "------------- CODIGO DOS MEUS EVENTOS ----------------" << endl;
              cout << "------- CODIGO DOS MEUS INGRESSOS COMPRADOS ----------\n" << endl;
              cntrISUsuario.Mostrar_Compras(usuario, container_i);
-             cout << "------- CODIGO DOS MEUS INGRESSOS VENDIDOS -----------" << endl;
 
             break;
 
@@ -326,6 +325,8 @@ while(escolha != 8){
             break;
 
     case 7:
+
+            cntrISUsuario.Mostrar_Vendas(usuario, container_i);
 
             break;
         }
@@ -551,4 +552,14 @@ Senha senha_aux;
 usuario.getUsuario(&cpf_aux, &senha_aux);
 
 container_i->Mostrar_Compras_Usuario(cpf_aux);
+}
+
+void CntrISUsuario::Mostrar_Vendas(Usuario usuario, ContainerIngresso *container_i){
+
+CPF cpf_aux;
+Senha senha_aux;
+usuario.getUsuario(&cpf_aux, &senha_aux);
+
+container_i->Mostrar_Vendas_Usuario(cpf_aux);
+
 }

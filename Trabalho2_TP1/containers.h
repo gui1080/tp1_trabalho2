@@ -121,6 +121,7 @@ public:
     ResultadoIngresso remover(Ingresso);
     ResultadoIngresso pesquisar(Codigo_de_Ingresso);
     void Mostrar_Compras_Usuario(CPF);
+    void Mostrar_Vendas_Usuario(CPF);
 };
 
 #endif // CONTAINERS_H_INCLUD

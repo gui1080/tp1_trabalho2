@@ -886,6 +886,35 @@ void ContainerIngresso::Mostrar_Compras_Usuario(CPF cpf_usuario){
         }
     }
 }
+
+void ContainerIngresso::Mostrar_Vendas_Usuario(CPF cpf_usuario){
+
+    Codigo_de_Ingresso codigo_i_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    CPF cpf_f_aux;
+    CPF cpf_c_aux;
+    Senha teste_senha;
+
+    long long int resultado_cpf;
+
+    long long int chave = cpf_usuario.getCPF();
+
+    for(list<Ingresso>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+
+           elemento->getIngresso(&codigo_i_aux, &codigo_ap_aux, &cpf_f_aux, &cpf_c_aux);
+           resultado_cpf = cpf_f_aux.getCPF();
+
+       if (resultado_cpf == chave){
+
+    cout << "------------------------------------------------------" << endl;
+    cout << "Codigo da apresentacao: " << codigo_i_aux.getCodigo_de_Ingresso() << endl;
+    cout << "CPF do comprador: " << cpf_c_aux.getCPF() << endl;
+    cout << "------------------------------------------------------\n" << endl;
+
+        }
+    }
+}
+
 /*
 bool Container_Apresentacoes::incluir( Ingressos_CPF ingressos_cpf){
 
