@@ -412,10 +412,13 @@ Evento CntrIUUsuario::Menu_Criar_Evento(Usuario usuario)throw(runtime_error){
         getchar();
         cout << "---------------- Estado do evento: -------------------" << endl;
         cin >> estado_evento;
+        getchar();
         cout << "---------------- Classe do evento: -------------------" << endl;
         cin >> classe_evento;
+        //getchar();
         cout << "-------------- Faixa Etaria do evento: ---------------" << endl;
         cin >> faixa_evento;
+        getchar();
         cout << "------------------------------------------------------\n" << endl;
 
         evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_aux.getCPF());
