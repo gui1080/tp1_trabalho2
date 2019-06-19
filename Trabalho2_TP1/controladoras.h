@@ -88,6 +88,7 @@ class CntrISUsuario : public ISUsuario{
     bool Cadastrar_Apresentacao(ContainerApresentacoes *container_ap, Apresentacao apresentacao);
     void Mostrar_Compras(Usuario usuario, ContainerIngresso *container_i);
     void Mostrar_Vendas(Usuario usuario, ContainerIngresso *container_i);
+    void Buscar_Apresentacao(ContainerEvento *container_e, ContainerApresentacoes *container_ap, Cidade cidade_consultar, Data data_consultar);
 
 };
 

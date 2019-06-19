@@ -35,6 +35,7 @@ private:
 
     CPF cpf;
     Senha senha;
+    int num_apresentacoes_criadas;
 
 public:
 
@@ -53,6 +54,12 @@ public:
      *
      */
     void getUsuario(CPF *cpf_f, Senha *senha_f);
+
+    void incrementa_Evento();
+
+    bool valida_criacao_Evento();
+
+    void inicia_Evento();
 
     Senha getSenha(){
         return senha;
@@ -166,6 +173,8 @@ private:
     Faixa_Etaria faixa;
     CPF cpf_dono;
 
+    int apresentacoes_associadas;
+
 public:
 
     /**
@@ -185,6 +194,13 @@ public:
      */
     void getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidade *cidade_f, Estados_Brasileiros *estado_f,
                    Classe_Evento *classe_f, Faixa_Etaria *faixa_f, CPF *cpf_f);
+
+    void incrementa_Apresentacao_associada();
+
+    bool valida_criacao_Apresentacao_associada();
+
+    void inicia_Apresentacao_associada();
+
 };
 
 

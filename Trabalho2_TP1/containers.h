@@ -75,10 +75,11 @@ public:
 
     bool incluir(Apresentacao);
     bool remover(Apresentacao);
-    Apresentacao pesquisar(Data);
+    void pesquisar(Data);
     ResultadoApresentacao pesquisar_Cod(Codigo_de_Apresentacao);
     bool mostrar();
 };
+
 /*
 class Container_Apresentacoes: public Apresentacao{
 

@@ -7,47 +7,48 @@ bool CntrIUAutenticacao::executar_autenticacao(CPF cpf) throw(runtime_error) {
 
 Usuario CntrIUAutenticacao::Tela_login()throw(runtime_error){
 
-Usuario usuario_aux;
-long long int cpf_aux_login;
-char senha_aux_login[7];
+    Usuario usuario_aux;
+    long long int cpf_aux_login;
+    char senha_aux_login[7];
 
- cout << "------------------------------------------------------" << endl;
-    cout << "-- Digite os seguinter dados para concluir o login: --" << endl;
-    cout << "------------------------------------------------------" << endl;
-    cout << "----------- CPF: ";
-    cin >> cpf_aux_login;
-    cout << "----------- Senha: ";
-    cin >> senha_aux_login;
-    cout << "------------------------------------------------------" << endl;
+     cout << "------------------------------------------------------" << endl;
+        cout << "-- Digite os seguinter dados para concluir o login: --" << endl;
+        cout << "------------------------------------------------------" << endl;
+        cout << "----------- CPF: ";
+        cin >> cpf_aux_login;
+        cout << "----------- Senha: ";
+        cin >> senha_aux_login;
+        cout << "------------------------------------------------------" << endl;
 
-usuario_aux.setUsuario(cpf_aux_login, senha_aux_login);
+    usuario_aux.setUsuario(cpf_aux_login, senha_aux_login);
+    usuario_aux.inicia_Evento();
 
 return usuario_aux;
 }
 
 bool CntrISAutenticacao::Autenticar(ContainerUsuario *container_usuario, Usuario usuario) throw(runtime_error){
 
-CPF cpf_aux;
-Senha senha_aux;
-ResultadoUsuario resultado_usuario;
+    CPF cpf_aux;
+    Senha senha_aux;
+    ResultadoUsuario resultado_usuario;
 
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
-resultado_usuario = container_usuario->pesquisar(cpf_aux);
+    resultado_usuario = container_usuario->pesquisar(cpf_aux);
 
-if(resultado_usuario.getValor() == resultado_usuario.FALHA){
+    if(resultado_usuario.getValor() == resultado_usuario.FALHA){
 
-    cout << "Usuario nao cadastrado\n";
+        cout << "Usuario nao cadastrado\n";
 
     return false;
 
-} else if(resultado_usuario.getValor() == resultado_usuario.SUCESSO){
+    } else if(resultado_usuario.getValor() == resultado_usuario.SUCESSO){
 
-cout << "usuario encontrado\n";
+        cout << "usuario encontrado\n";
 
     return true;
 
-}
+    }
 
 }
 
@@ -124,11 +125,11 @@ Usuario CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, Containe
 
 Usuario CntrIUUsuario::Criar_usuario() throw(runtime_error){
 
-Usuario usuario_aux;
-CPF cpf_aux;
-Senha senha_aux;
-long long int novo_cpf;
-char nova_senha[7];
+    Usuario usuario_aux;
+    CPF cpf_aux;
+    Senha senha_aux;
+    long long int novo_cpf;
+    char nova_senha[7];
 
     cout << "------------------------------------------------------" << endl;
     cout << "--- Informe os seguintes dados para criar a conta: ---" << endl;
@@ -141,31 +142,32 @@ char nova_senha[7];
     cin >> nova_senha;
     cout << "------------------------------------------------------" << endl;
 
-//usuario_aux.setUsuario(29700582191, "Pao123");
-usuario_aux.setUsuario(novo_cpf, nova_senha);
-usuario_aux.getUsuario(&cpf_aux, &senha_aux);
+    //usuario_aux.setUsuario(29700582191, "Pao123");
+    usuario_aux.setUsuario(novo_cpf, nova_senha);
+    usuario_aux.inicia_Evento();
+    usuario_aux.getUsuario(&cpf_aux, &senha_aux);
 
-cout << "---------- Seu CPF e: " << cpf_aux.getCPF() << "---------------------\n";
-cout << "---------- Sua senha e: " << senha_aux.getSenha() << "------------------------\n";
-cout << "------------------------------------------------------" << endl;
+    cout << "---------- Seu CPF e: " << cpf_aux.getCPF() << "---------------------\n";
+    cout << "---------- Sua senha e: " << senha_aux.getSenha() << "------------------------\n";
+    cout << "------------------------------------------------------" << endl;
 
-return usuario_aux;
+    return usuario_aux;
 
 }
 
 Cartao_de_credito CntrIUUsuario::Criar_cartao_de_credito(Usuario usuario) throw(runtime_error){
 
-CPF cpf_aux;
-Numero_Cartao_Credito numero_aux;
-Codigo_de_Seguranca_Cartao_Credito codigo_aux;
-Data_Validade_Cartao_Credito data_aux;
-Cartao_de_credito cartao_de_credito_aux;
-Senha senha_aux;
-long long int novo_num_cartao;
-int novo_cod_cartao;
-char nova_data[6];
+    CPF cpf_aux;
+    Numero_Cartao_Credito numero_aux;
+    Codigo_de_Seguranca_Cartao_Credito codigo_aux;
+    Data_Validade_Cartao_Credito data_aux;
+    Cartao_de_credito cartao_de_credito_aux;
+    Senha senha_aux;
+    long long int novo_num_cartao;
+    int novo_cod_cartao;
+    char nova_data[6];
 
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
     cout << "------ Informacoes sobre o cartao de credito: --------" << endl;
     cout << "------------------------------------------------------" << endl;
@@ -177,17 +179,17 @@ usuario.getUsuario(&cpf_aux, &senha_aux);
     cin >> nova_data;
     cout << "------------------------------------------------------" << endl;
 
-//cartao_de_credito_aux.setCartao_de_credito(30211944335337, 123, "10/10", cpf_aux.getCPF());
-cartao_de_credito_aux.setCartao_de_credito(novo_num_cartao, novo_cod_cartao, nova_data, cpf_aux.getCPF());
-cartao_de_credito_aux.getCartao_de_credito(&numero_aux, &codigo_aux, &data_aux, &cpf_aux);
+    //cartao_de_credito_aux.setCartao_de_credito(30211944335337, 123, "10/10", cpf_aux.getCPF());
+    cartao_de_credito_aux.setCartao_de_credito(novo_num_cartao, novo_cod_cartao, nova_data, cpf_aux.getCPF());
+    cartao_de_credito_aux.getCartao_de_credito(&numero_aux, &codigo_aux, &data_aux, &cpf_aux);
 
-cout << "-- Seu CPF e: " << cpf_aux.getCPF() << "-----------------------------\n";
-cout << "-- Seu numero de cartao de credito e: " << numero_aux.getNumero_Cartao_Credito() << "--\n";
-cout << "-- Seu codigo de cartao de credito e: " << codigo_aux.getCodigo_de_Seguranca_Cartao_Credito() << "-------------\n";
-cout << "- A data de validade do seu cartao de credito e: " << data_aux.getData_Validade_Cartao_Credito() << "\n";
-cout << "------------------------------------------------------\n" << endl;
+    cout << "-- Seu CPF e: " << cpf_aux.getCPF() << "-----------------------------\n";
+    cout << "-- Seu numero de cartao de credito e: " << numero_aux.getNumero_Cartao_Credito() << "--\n";
+    cout << "-- Seu codigo de cartao de credito e: " << codigo_aux.getCodigo_de_Seguranca_Cartao_Credito() << "-------------\n";
+    cout << "- A data de validade do seu cartao de credito e: " << data_aux.getData_Validade_Cartao_Credito() << "\n";
+    cout << "------------------------------------------------------\n" << endl;
 
-return cartao_de_credito_aux;
+    return cartao_de_credito_aux;
 
 }
 
@@ -203,26 +205,47 @@ Usuario CntrIUUsuario::Menu_Edicao_usuario(){
 
 bool CntrISUsuario::Cadastrar(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito) throw(runtime_error){
 
-Usuario usuario_aux;
-ResultadoUsuario resultado_usuario;
-ResultadoCartao_de_credito resultado_cartao_de_credito;
+    Usuario usuario_aux;
+    ResultadoUsuario resultado_usuario;
+    ResultadoCartao_de_credito resultado_cartao_de_credito;
 
-resultado_usuario = container_u->incluir(usuario);
-resultado_cartao_de_credito = container_c->incluir(cartao_de_credito);
+    resultado_usuario = container_u->incluir(usuario);
+    resultado_cartao_de_credito = container_c->incluir(cartao_de_credito);
 
-if(resultado_usuario.getValor() == true && resultado_cartao_de_credito.getValor() == true){
-    return true;
-} else {
-return false;
+    if(resultado_usuario.getValor() == true && resultado_cartao_de_credito.getValor() == true){
+        return true;
+    } else {
+        return false;
+    }
+
 }
 
+void CntrISUsuario::Buscar_Apresentacao(ContainerEvento *container_e, ContainerApresentacoes *container_ap, Cidade cidade_consultar, Data data_consultar){
+
+    cout << "Buscando eventos que satisfazem condicao..." << endl;
+
+    container_e->achar_evento_em_cidade(cidade_consultar);
+
+    cout << "Buscando apresentacoes que satisfazem condicao..." << endl;
+
+    container_ap->pesquisar(data_consultar);
+
 }
+
 
 void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u, ContainerCartao_de_credito *container_c,
                                  ContainerEvento *container_e, ContainerApresentacoes *container_ap, ContainerIngresso *container_i){
 
     int escolha;
     int escolha_ap;
+
+    Cidade cidade_consulta;
+    Data data_consulta;
+
+    string cidade_consulta_aux;
+    string data_consulta_aux;
+
+
 
     CntrGeral cntrGeral;
 
@@ -255,68 +278,87 @@ void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u, 
 
     usuario.getUsuario(&cpf_aux, &senha_aux);
 
-while(escolha != 8){
+    while(escolha != 8){
 
-    cout << "\n------------------------------------------------------" << endl;
-    cout << "--------  Escolha o que se deseja fazer: -------------" << endl;
-    cout << "------------------------------------------------------" << endl;
-    cout << "-------- Visualizar dados da conta: Digite 1 ---------" << endl;
-    cout << "----------     Editar conta:  Digite 2 ---------------" << endl;
-    cout << "-------- Consultar apresentacoes: Digite 3 -----------" << endl;
-    cout << "----------- Cadastrar evento: Digite 4 ---------------" << endl;
-    cout << "-------- Editar evento cadastrado: Digite 5 ----------" << endl;
-    cout << "------------- Comprar Ingresso: Digite 6 -------------" << endl;
-    cout << "------- Visualizar minhas vendas: Digite 7 -----------" << endl;
-    cout << "-------------- Fazer logout: Digite 8 ----------------" << endl;
-    cout << "------------------------------------------------------\n" << endl;
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "--------  Escolha o que se deseja fazer: -------------" << endl;
+        cout << "------------------------------------------------------" << endl;
+        cout << "-------- Visualizar dados da conta: Digite 1 ---------" << endl;
+        cout << "----------     Editar conta:  Digite 2 ---------------" << endl;
+        cout << "-------- Consultar apresentacoes: Digite 3 -----------" << endl;
+        cout << "----------- Cadastrar evento: Digite 4 ---------------" << endl;
+        cout << "-------- Editar evento cadastrado: Digite 5 ----------" << endl;
+        cout << "------------- Comprar Ingresso: Digite 6 -------------" << endl;
+        cout << "------- Visualizar minhas vendas: Digite 7 -----------" << endl;
+        cout << "-------------- Fazer logout: Digite 8 ----------------" << endl;
+        cout << "------------------------------------------------------\n" << endl;
 
-    cin >> escolha;
+        cin >> escolha;
 
-    switch (escolha){
+        switch (escolha){
 
-    case 1:
+        case 1:
 
-             cout << "------------------- MEU USUARIO ----------------------" << endl;
-             cout << "CPF: " << cpf_aux.getCPF() << endl;
-             cout << "Senha: " << senha_aux.getSenha() << endl;
-             cout << "------------- MEU CARTAO DE CREDITO ------------------" << endl;
+            cout << "------------------- MEU USUARIO ----------------------" << endl;
+            cout << "CPF: " << cpf_aux.getCPF() << endl;
+            cout << "Senha: " << senha_aux.getSenha() << endl;
+            cout << "------------- MEU CARTAO DE CREDITO ------------------" << endl;
             //cout << "CPF: " << resultado_meus_dados.getUsuario();
-             cout << "------------- CODIGO DOS MEUS EVENTOS ----------------" << endl;
-             cout << "------- CODIGO DOS MEUS INGRESSOS COMPRADOS ----------\n" << endl;
-             cntrISUsuario.Mostrar_Compras(usuario, container_i);
+            cout << "------------- CODIGO DOS MEUS EVENTOS ----------------" << endl;
+            cout << "------- CODIGO DOS MEUS INGRESSOS COMPRADOS ----------\n" << endl;
+            cntrISUsuario.Mostrar_Compras(usuario, container_i);
 
             break;
 
-    case 2:
+        case 2:
 
             break;
 
-    case 3:
+        case 3:
+
+            //consulta de apresentacao
+            cout << "-------------------Digite a Cidade que deseja:----------------------" << endl;
+            cin >> cidade_consulta_aux;
+            getchar();
+            cout << "--------------------Digite a data que deseja:------------------------" << endl;
+            cin >> data_consulta_aux;
+            getchar();
+
+            cidade_consulta.setCidade(cidade_consulta_aux);
+            data_consulta.setData(data_consulta_aux);
+
+            cntrISUsuario.Buscar_Apresentacao(container_e, container_ap, cidade_consulta, data_consulta);
 
             break;
 
-    case 4:
+        case 4:
+
 
             evento_aux = cntrIUUsuario.Menu_Criar_Evento(usuario);
             cntrISUsuario.Cadastrar_Evento(container_e, evento_aux);
 
+
             while(escolha_ap != 2){
 
-            apresentacao_aux = cntrIUUsuario.Menu_Criar_Apresentacao(evento_aux);
-            cntrISUsuario.Cadastrar_Apresentacao(container_ap, apresentacao_aux);
-
-            cout << "Digite 1 se deseja adicionar apresentacoes e 2 caso deseje voltar\n";
-            cin >> escolha_ap;
+                if((evento_aux.valida_criacao_Apresentacao_associada()) == false){
+                    cout << "Atencao! Este evento atingiu o maximo de apresentacoes associadas possiveis!" << endl;
+                }
+                else{
+                    apresentacao_aux = cntrIUUsuario.Menu_Criar_Apresentacao(evento_aux);
+                    cntrISUsuario.Cadastrar_Apresentacao(container_ap, apresentacao_aux);
+                }
+                cout << "Digite 1 se deseja adicionar apresentacoes e 2 caso deseje voltar\n";
+                cin >> escolha_ap;
 
             }
 
             break;
 
-    case 5:
+        case 5:
 
             break;
 
-    case 6:
+        case 6:
 
             resultado_ing = cntrIUVendas.Achar_Ingresso(usuario, container_e, container_ap);
             ingresso_aux = resultado_ing.getIngresso();
@@ -324,91 +366,99 @@ while(escolha != 8){
 
             break;
 
-    case 7:
+        case 7:
 
             cntrISUsuario.Mostrar_Vendas(usuario, container_i);
 
             break;
         }
-}
+    }
 }
 
 Evento CntrIUUsuario::Menu_Criar_Evento(Usuario usuario)throw(runtime_error){
 
-CPF cpf_aux;
-Senha senha_aux;
+    CPF cpf_aux;
+    Senha senha_aux;
 
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
-Evento evento_final;
+    Evento evento_final;
 
-int codigo_evento;
-char nome_evento[21];
-char cidade_evento[16];
-char estado_evento[3];
-int classe_evento;
-char faixa_evento[3];
-long long int cpf_dono_evento;
+    int codigo_evento;
+    char nome_evento[21];
+    char cidade_evento[16];
+    char estado_evento[3];
+    int classe_evento;
+    char faixa_evento[3];
+    long long int cpf_dono_evento;
 
- cout << "\n------------------------------------------------------" << endl;
-    cout << "------------------  CRIAR EVENTO: --------------------" << endl;
-    cout << "------------------------------------------------------" << endl;
-    cout << "-------- DIGITE AS INFORMACOES PEDIDAS: --------------" << endl;
-    cout << "------------------------------------------------------" << endl;
-    cout << "--------------- Codigo do evento: --------------------" << endl;
-    cin >> codigo_evento;
-    cout << "---------------- Nome do evento: ---------------------" << endl;
-    cin >> nome_evento;
-    getchar();
-    cout << "---------------- Cidade do evento: -------------------" << endl;
-    cin >> cidade_evento;
-    getchar();
-    cout << "---------------- Estado do evento: -------------------" << endl;
-    cin >> estado_evento;
-    cout << "---------------- Classe do evento: -------------------" << endl;
-    cin >> classe_evento;
-    cout << "-------------- Faixa Etaria do evento: ---------------" << endl;
-    cin >> faixa_evento;
-    cout << "------------------------------------------------------\n" << endl;
+    if((usuario.valida_criacao_Evento()) == false ){
+        cout << "Sinto muito, mas este usuario ja esta em seu limite maximo de Evento associados a conta (5 eventos)!\nO sistema nao pode criar outro Evento neste Usuario!" << endl;
+    }
 
-    evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_aux.getCPF());
+    else{
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "------------------  CRIAR EVENTO: --------------------" << endl;
+        cout << "------------------------------------------------------" << endl;
+        cout << "-------- DIGITE AS INFORMACOES PEDIDAS: --------------" << endl;
+        cout << "------------------------------------------------------" << endl;
+        cout << "--------------- Codigo do evento: --------------------" << endl;
+        cin >> codigo_evento;
+        cout << "---------------- Nome do evento: ---------------------" << endl;
+        cin >> nome_evento;
+        getchar();
+        cout << "---------------- Cidade do evento: -------------------" << endl;
+        cin >> cidade_evento;
+        getchar();
+        cout << "---------------- Estado do evento: -------------------" << endl;
+        cin >> estado_evento;
+        cout << "---------------- Classe do evento: -------------------" << endl;
+        cin >> classe_evento;
+        cout << "-------------- Faixa Etaria do evento: ---------------" << endl;
+        cin >> faixa_evento;
+        cout << "------------------------------------------------------\n" << endl;
 
-    return evento_final;
+        evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_aux.getCPF());
+        usuario.incrementa_Evento();
+        evento_final.inicia_Apresentacao_associada();
+        }
+
+        return evento_final;
 }
 
 bool CntrISUsuario::Cadastrar_Evento(ContainerEvento *container_e, Evento evento){
 
-bool resultado;
+    bool resultado;
 
-resultado = container_e->incluir(evento);
+    resultado = container_e->incluir(evento);
 
-return resultado;
+    return resultado;
 
 }
 
 Apresentacao CntrIUUsuario::Menu_Criar_Apresentacao(Evento evento) throw(runtime_error){
 
-Codigo_de_Evento codigo_aux;
-Nome_de_Evento nome_aux;
-Cidade cidade_aux;
-Estados_Brasileiros estado_aux;
-Classe_Evento classe_aux;
-Faixa_Etaria faixa_aux;
-CPF cpf_aux;
+    Codigo_de_Evento codigo_aux;
+    Nome_de_Evento nome_aux;
+    Cidade cidade_aux;
+    Estados_Brasileiros estado_aux;
+    Classe_Evento classe_aux;
+    Faixa_Etaria faixa_aux;
+    CPF cpf_aux;
 
-evento.getEvento(&codigo_aux, &nome_aux, &cidade_aux, &estado_aux,  &classe_aux, &faixa_aux, &cpf_aux);
+    evento.getEvento(&codigo_aux, &nome_aux, &cidade_aux, &estado_aux,  &classe_aux, &faixa_aux, &cpf_aux);
 
-Apresentacao apresentacao_final;
+    Apresentacao apresentacao_final;
 
-int codigo_ap;
-char data_ap[7];
-char horario_ap[6];
-float preco_ap;
-int sala_ap;
-int disponibilidade_ap;
-int codigo_ev_ap;
+    int codigo_ap;
+    char data_ap[7];
+    char horario_ap[6];
+    float preco_ap;
+    int sala_ap;
+    int disponibilidade_ap;
+    int codigo_ev_ap;
 
-cout << "\n------------------------------------------------------" << endl;
+    cout << "\n------------------------------------------------------" << endl;
     cout << "---------------- CRIAR APRESENTACAO: -----------------" << endl;
     cout << "------------------------------------------------------" << endl;
     cout << "-------- DIGITE AS INFORMACOES PEDIDAS: --------------" << endl;
@@ -430,109 +480,113 @@ cout << "\n------------------------------------------------------" << endl;
     cout << "------------------------------------------------------\n" << endl;
 
     apresentacao_final.setApresentacao(codigo_ap, data_ap, horario_ap, preco_ap, sala_ap, disponibilidade_ap, codigo_aux.getCodigo_de_Evento());
+    evento.incrementa_Apresentacao_associada();
+
+
+
     return apresentacao_final;
+
 }
 
 bool CntrISUsuario::Cadastrar_Apresentacao(ContainerApresentacoes *container_ap, Apresentacao apresentacao){
 
-bool resultado;
+    bool resultado;
 
-resultado = container_ap->incluir(apresentacao);
+    resultado = container_ap->incluir(apresentacao);
 
-return resultado;
-
+    return resultado;
 }
 
 ResultadoIngresso CntrIUVendas::Achar_Ingresso(Usuario usuario, ContainerEvento *container_e, ContainerApresentacoes *container_ap){
 
-int codigo_ap;
-int codigo_i = rand()%(999 - 1) + 1;
-Ingresso ingresso_final;
+    int codigo_ap;
+    int codigo_i = rand()%(999 - 1) + 1;
+    Ingresso ingresso_final;
 
-cout << "------------------------------------------------------" << endl;
-cout << "----------------- COMPRAR INGRESSOS ------------------" << endl;
-cout << "------------------------------------------------------" << endl;
-cout << "------- Digite o Codigo da apresentacao desejada -----" << endl;
-cin >> codigo_ap;
-
-Apresentacao apresentacao;
-Evento evento;
-ResultadoEvento resultado;
-ResultadoApresentacao resultado_ap;
-ResultadoIngresso resultado_i;
-
-Codigo_de_Apresentacao codigo_ap_aux;
-Data data_ap;
-Horario horario_ap;
-Preco preco_ap;
-Numero_de_Sala sala_ap;
-Disponibilidade disponibilidade_ap;
-Codigo_de_Evento codigo_ev_ap;
-
-codigo_ap_aux.setCodigo_de_Apresentacao(codigo_ap);
-
-resultado_ap = container_ap->pesquisar_Cod(codigo_ap_aux);
-apresentacao =  resultado_ap.getApresentacao();
-
-apresentacao.getApresentacao(&codigo_ap_aux, &data_ap, &horario_ap, &preco_ap, &sala_ap, &disponibilidade_ap, &codigo_ev_ap);
-
-if(resultado_ap.getValor() == Resultado::FALHA){
-
-    cout << "Apresentacao nao encontrada\n";
-    resultado_i.setValor(Resultado::FALHA);
-    return resultado_i;
-} else {
     cout << "------------------------------------------------------" << endl;
-    cout << "------------- APRESENTACAO ENCONTRADA: ---------------" << endl;
+    cout << "----------------- COMPRAR INGRESSOS ------------------" << endl;
     cout << "------------------------------------------------------" << endl;
-    cout << "Codigo da apresentacao: " << codigo_ap_aux.getCodigo_de_Apresentacao() << endl;
-    cout << "Data da apresentacao: " << data_ap.getData() << endl;
-    cout << "Horario da apresentacao: " << horario_ap.getHorario() << endl;
-    cout << "Sala da apresentacao: " << sala_ap.getNumero_de_Sala() << endl;
-    cout << "Preco da apresentacao: "<< preco_ap.getPreco() << endl;
-    cout << "Disponibilidade da apresentacao: " << disponibilidade_ap.getDisponibilidade() << endl;
-    cout << "------------------------------------------------------\n" << endl;
+    cout << "------- Digite o Codigo da apresentacao desejada -----" << endl;
+    cin >> codigo_ap;
 
-resultado = container_e->pesquisar_Evento(codigo_ev_ap);
-evento = resultado.getEvento();
+    Apresentacao apresentacao;
+    Evento evento;
+    ResultadoEvento resultado;
+    ResultadoApresentacao resultado_ap;
+    ResultadoIngresso resultado_i;
 
-Codigo_de_Evento codigo_e_aux;
-Nome_de_Evento nome_aux;
-Cidade cidade_aux;
-Estados_Brasileiros estado_aux;
-Classe_Evento classe_aux;
-Faixa_Etaria faixa_aux;
-CPF cpf_e_aux;
+    Codigo_de_Apresentacao codigo_ap_aux;
+    Data data_ap;
+    Horario horario_ap;
+    Preco preco_ap;
+    Numero_de_Sala sala_ap;
+    Disponibilidade disponibilidade_ap;
+    Codigo_de_Evento codigo_ev_ap;
 
-evento.getEvento(&codigo_e_aux, &nome_aux, &cidade_aux, &estado_aux, &classe_aux, &faixa_aux, &cpf_e_aux);
+    codigo_ap_aux.setCodigo_de_Apresentacao(codigo_ap);
 
-CPF cpf_c_aux;
-Senha senha_aux;
+    resultado_ap = container_ap->pesquisar_Cod(codigo_ap_aux);
+    apresentacao =  resultado_ap.getApresentacao();
 
-usuario.getUsuario(&cpf_c_aux, &senha_aux);
+    apresentacao.getApresentacao(&codigo_ap_aux, &data_ap, &horario_ap, &preco_ap, &sala_ap, &disponibilidade_ap, &codigo_ev_ap);
 
-ingresso_final.setIngresso(codigo_i, codigo_ap, cpf_e_aux.getCPF(),cpf_c_aux.getCPF());
-resultado_i.setValor(Resultado::SUCESSO);
-resultado_i.setIngresso(ingresso_final);
+    if(resultado_ap.getValor() == Resultado::FALHA){
 
-return resultado_i;
-}
+        cout << "Apresentacao nao encontrada\n";
+        resultado_i.setValor(Resultado::FALHA);
+        return resultado_i;
+    } else {
+        cout << "------------------------------------------------------" << endl;
+        cout << "------------- APRESENTACAO ENCONTRADA: ---------------" << endl;
+        cout << "------------------------------------------------------" << endl;
+        cout << "Codigo da apresentacao: " << codigo_ap_aux.getCodigo_de_Apresentacao() << endl;
+        cout << "Data da apresentacao: " << data_ap.getData() << endl;
+        cout << "Horario da apresentacao: " << horario_ap.getHorario() << endl;
+        cout << "Sala da apresentacao: " << sala_ap.getNumero_de_Sala() << endl;
+        cout << "Preco da apresentacao: "<< preco_ap.getPreco() << endl;
+        cout << "Disponibilidade da apresentacao: " << disponibilidade_ap.getDisponibilidade() << endl;
+        cout << "------------------------------------------------------\n" << endl;
+
+        resultado = container_e->pesquisar_Evento(codigo_ev_ap);
+        evento = resultado.getEvento();
+
+        Codigo_de_Evento codigo_e_aux;
+        Nome_de_Evento nome_aux;
+        Cidade cidade_aux;
+        Estados_Brasileiros estado_aux;
+        Classe_Evento classe_aux;
+        Faixa_Etaria faixa_aux;
+        CPF cpf_e_aux;
+
+        evento.getEvento(&codigo_e_aux, &nome_aux, &cidade_aux, &estado_aux, &classe_aux, &faixa_aux, &cpf_e_aux);
+
+        CPF cpf_c_aux;
+        Senha senha_aux;
+
+        usuario.getUsuario(&cpf_c_aux, &senha_aux);
+
+        ingresso_final.setIngresso(codigo_i, codigo_ap, cpf_e_aux.getCPF(),cpf_c_aux.getCPF());
+        resultado_i.setValor(Resultado::SUCESSO);
+        resultado_i.setIngresso(ingresso_final);
+
+        return resultado_i;
+        }
 }
 
 bool CntrISVendas::Comprar_Ingresso(Ingresso ingresso, ContainerIngresso *container_i){
 
-bool resultado;
+    bool resultado;
 
-container_i->incluir(ingresso);
+    container_i->incluir(ingresso);
 
-Codigo_de_Apresentacao codigo_ap;
-Codigo_de_Ingresso codigo_i;
-CPF cpf_forn;
-CPF cpf_comp;
+    Codigo_de_Apresentacao codigo_ap;
+    Codigo_de_Ingresso codigo_i;
+    CPF cpf_forn;
+    CPF cpf_comp;
 
-ingresso.getIngresso(&codigo_i, &codigo_ap, &cpf_forn, &cpf_comp);
+    ingresso.getIngresso(&codigo_i, &codigo_ap, &cpf_forn, &cpf_comp);
 
-cout << "------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------" << endl;
     cout << "---------------- INGRESSO GERADO: ----------------" << endl;
     cout << "------------------------------------------------------" << endl;
     cout << "Codigo do Ingresso: " << codigo_i.getCodigo_de_Ingresso() << endl;
@@ -547,19 +601,19 @@ return resultado;
 
 void CntrISUsuario::Mostrar_Compras(Usuario usuario, ContainerIngresso *container_i){
 
-CPF cpf_aux;
-Senha senha_aux;
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    CPF cpf_aux;
+    Senha senha_aux;
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
-container_i->Mostrar_Compras_Usuario(cpf_aux);
+    container_i->Mostrar_Compras_Usuario(cpf_aux);
 }
 
 void CntrISUsuario::Mostrar_Vendas(Usuario usuario, ContainerIngresso *container_i){
 
-CPF cpf_aux;
-Senha senha_aux;
-usuario.getUsuario(&cpf_aux, &senha_aux);
+    CPF cpf_aux;
+    Senha senha_aux;
+    usuario.getUsuario(&cpf_aux, &senha_aux);
 
-container_i->Mostrar_Vendas_Usuario(cpf_aux);
+    container_i->Mostrar_Vendas_Usuario(cpf_aux);
 
 }

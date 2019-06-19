@@ -478,6 +478,7 @@ bool ContainerEvento::achar_evento_em_cidade(Cidade cidade){
     string cidade_chave;
     string cidade_atual;
     cidade_chave = cidade.getCidade();
+    cout << "Eventos que ocorrem na cidade desejada: \n\n";
 
     for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
@@ -602,7 +603,7 @@ bool ContainerApresentacoes::remover(Apresentacao apresentacao){
     return resultado;
 }
 
-Apresentacao ContainerApresentacoes::pesquisar(Data data){
+void ContainerApresentacoes::pesquisar(Data data){
 
     // Procurar elemento.
 
@@ -616,9 +617,13 @@ Apresentacao ContainerApresentacoes::pesquisar(Data data){
 
     int codigo_mostrar;
 
+    int achamos = 0;
+
     Apresentacao resultado;
+
     string resultado_data;
     string chave = data.getData();
+    cout << "Buscando apresentacoes no dia desejado...\n\n";
 
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
@@ -628,23 +633,25 @@ Apresentacao ContainerApresentacoes::pesquisar(Data data){
 
         codigo_mostrar = codigo_aux.getCodigo_de_Apresentacao();
 
-        if (resultado_data == chave){
-
+        if ( resultado_data.compare(chave) == 0 ){
+            //resultado_data == chave
             // Elemento localizado.
 
             resultado.setApresentacao(codigo_aux.getCodigo_de_Apresentacao(), data_aux.getData(), horario_aux.getHorario(), preco_aux.getPreco(),
             sala_aux.getNumero_de_Sala(), disponibilidade_aux.getDisponibilidade(), cod_evento_aux.getCodigo_de_Evento());
-            cout << "Apresentacao encontrada!" << endl;
+            cout << "Apresentacao  encontrada!" << endl;
             cout << "Codigo da apresentacao: ";
             cout << codigo_mostrar;
             cout << "\n";
-            return resultado;
+            achamos == 1;
         }
     }
 
-    cout << "Apresentacao nao encontrada";
-    cout << "\n";
-    return resultado;
+    if(achamos == 0){
+        cout << "Apresentacao nao encontrada";
+        cout << "\n";
+    }
+    //return resultado;
 }
 
 ResultadoApresentacao ContainerApresentacoes::pesquisar_Cod(Codigo_de_Apresentacao codigo){

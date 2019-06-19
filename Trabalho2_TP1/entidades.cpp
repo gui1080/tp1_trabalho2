@@ -30,6 +30,23 @@ void Usuario::getUsuario(CPF *cpf_f, Senha *senha_f){
 
 }
 
+void Usuario::inicia_Evento(){
+    num_apresentacoes_criadas = 0;
+}
+
+void Usuario::incrementa_Evento(){
+    num_apresentacoes_criadas++;
+}
+
+bool Usuario::valida_criacao_Evento(){
+    if(num_apresentacoes_criadas >= 5){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 void Ingresso::setIngresso(int novo_codigo, int novo_codigo_ap, long long int novo_cpf_fornecedor, long long int novo_cpf_comprador) throw (invalid_argument){
 
 codigo.setCodigo_de_Ingresso(novo_codigo);
@@ -100,6 +117,23 @@ void Evento::getEvento(Codigo_de_Evento *codigo_f, Nome_de_Evento *nome_f, Cidad
 
     return;
 
+}
+
+void Evento::incrementa_Apresentacao_associada(){
+    apresentacoes_associadas++;
+}
+
+bool Evento::valida_criacao_Apresentacao_associada(){
+    if(apresentacoes_associadas >= 10 ){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+void Evento::inicia_Apresentacao_associada(){
+    apresentacoes_associadas = 0;
 }
 
 
