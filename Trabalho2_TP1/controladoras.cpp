@@ -316,6 +316,7 @@ void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u, 
 
         case 3:
 
+        /*
             //consulta de apresentacao
             cout << "-------------------Digite a Cidade que deseja:----------------------" << endl;
             cin >> cidade_consulta_aux;
@@ -328,7 +329,7 @@ void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u, 
             data_consulta.setData(data_consulta_aux);
 
             cntrISUsuario.Buscar_Apresentacao(container_e, container_ap, cidade_consulta, data_consulta);
-
+        */
             break;
 
         case 4:
