@@ -2,10 +2,15 @@
 
 Professor: Fernando Antonio de Araújo Chacon de Albuquerque
 
-Data final de entrega: xx/05/2019
+Data final de entrega: 25/05/2019
 
 1/2019, UnB
 
+# Features não implementadas
+
+> Editar conta
+
+> Buscar apresentação (mecanismo de busca codificado, mas não aplicado no sistema)
 
 # Alunos
 
