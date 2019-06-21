@@ -8,9 +8,9 @@ Data final de entrega: 25/05/2019
 
 # Features não implementadas
 
-> Editar conta
+-Editar conta
 
-> Buscar apresentação (mecanismo de busca codificado, mas não aplicado no sistema)
+-Buscar apresentação (mecanismo de busca codificado, mas não aplicado no sistema)
 
 # Alunos
 
@@ -31,9 +31,6 @@ https://cic.unb.br/~fernando/matdidatico/intro.htm
 # Link do Github
 
 https://github.com/therealguib545/tp1_trabalho2
-
-
-# Documentação
 
 
 # Smoke Test
