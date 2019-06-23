@@ -46,16 +46,6 @@ public:
 class ISUsuario {
 public:
 
-    //virtual bool Cadastrar(Usuario, Cartao_de_credito) throw(runtime_error) = 0;
-    //virtual bool Remover(Usuario) throw(runtime_error) = 0;
-    //virtual bool Editar(Usuario) throw(runtime_error) = 0;
-
-    //virtual bool Cadastrar_evento(Evento) throw(runtime_error) = 0;
-    //virtual bool Remover_evento(Evento) throw(runtime_error) = 0;
-    //virtual bool Editar_evento(Evento) throw(runtime_error) = 0;
-
-    //virtual bool Mostrar_vendas() throw(runtime_error) = 0;
-
     virtual ~ISUsuario(){}
 };
 
@@ -78,8 +68,6 @@ public:
 class IUVendas {
 public:
 
-    //Disponibilidade eh a quantidade de ingressos a serem compradas pelo usuario
-    //virtual void executar(CPF, Evento, Apresentacao, Disponibilidade) throw(runtime_error) = 0;
 
     virtual void setCntrISVendas(ISVendas *) = 0;
 
@@ -89,7 +77,6 @@ public:
 class ISVendas {
 public:
 
-    //virtual bool Comprar(Codigo_de_Apresentacao) throw(runtime_error) = 0;
 
     virtual ~ISVendas(){}
 };

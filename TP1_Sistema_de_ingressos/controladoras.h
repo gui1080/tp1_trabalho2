@@ -77,7 +77,7 @@ class CntrIUUsuario : public IUUsuario{
     Usuario Menu_Edicao_usuario();
     ResultadoEvento  Menu_Edicao_evento(Usuario usuario, ContainerEvento *container_e,
                                         ContainerIngresso *container_i);
-    //Apresentacao Menu_Edicao_apresentacao();
+
     ResultadoEvento Menu_Remocao_Evento(Usuario usuario, ContainerEvento *container_e, ContainerIngresso *container_i);
 
 };
