@@ -94,14 +94,10 @@ ResultadoUsuario ContainerUsuario::pesquisar(CPF cpf){
             // Elemento localizado.
             resultado.setUsuario(*elemento);
             resultado.setValor(Resultado::SUCESSO);
-            cout << "usuario encontrado";
-            cout << "\n";
             return resultado;
         }
     }
 
-    cout << "usuario nao encontrado";
-    cout << "\n";
     return resultado;
 }
 ///////////////////////////////////// CARTAO DE CREDITO /////////////////////////////////////////////////////
@@ -172,14 +168,10 @@ ResultadoCartao_de_credito ContainerCartao_de_credito::pesquisar(CPF cpf){
 
             resultado.setCartao_de_credito(*elemento);
             resultado.setValor(Resultado::SUCESSO);
-            cout << "cartao encontrado encontrado";
-            cout << "\n";
             return resultado;
         }
     }
 
-    cout << "cartao nao encontrado";
-    cout << "\n";
     return resultado;
 }
 
@@ -389,14 +381,10 @@ ResultadoEvento ContainerEvento::pesquisar_Evento(Codigo_de_Evento codigo_e){
             // Elemento localizado.
             resultado.setEvento(*elemento);
             resultado.setValor(Resultado::SUCESSO);
-            cout << "Evento encontrado";
-            cout << "\n";
             return resultado;
         }
     }
 
-    cout << "Evento nao encontrado";
-    cout << "\n";
     return resultado;
 }
 
@@ -485,11 +473,6 @@ bool ContainerEvento::achar_evento_em_cidade(Cidade cidade){
         cidade_atual = cidade_aux.getCidade();
 
         if(cidade_chave != cidade_atual){
-            //if(achamamos_cidade == 0){
-              //  cout << "Achamos estes eventos na cidade desejada: \n" << endl;    //primeira ocorrencia
-                //achamos_cidade = 1;
-            //}
-            //else{
 
                 cod_evento_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
                 nome_evento_mostrar = nome_de_evento_aux.getNome_de_Evento();
@@ -848,14 +831,10 @@ ResultadoIngresso ContainerIngresso::pesquisar(Codigo_de_Ingresso codigo_i){
             // Elemento localizado.
             resultado.setIngresso(*elemento);
             resultado.setValor(Resultado::SUCESSO);
-            cout << "Ingresso encontrado";
-            cout << "\n";
             return resultado;
         }
     }
 
-    cout << "Ingresso nao encontrado";
-    cout << "\n";
     return resultado;
 
 }
@@ -886,14 +865,10 @@ ResultadoIngresso ContainerIngresso::pesquisar_CPF(CPF cpf){
             // Elemento localizado.
             resultado.setIngresso(*elemento);
             resultado.setValor(Resultado::SUCESSO);
-            cout << "Ingresso encontrado";
-            cout << "\n";
             return resultado;
         }
     }
 
-    cout << "Ingresso nao encontrado";
-    cout << "\n";
     return resultado;
 
 }
@@ -982,104 +957,3 @@ void ContainerApresentacoes::remover_ap_usuario(Codigo_de_Evento cod_ev){
     }
 
 }
-/*
-bool Container_Apresentacoes::incluir( Ingressos_CPF ingressos_cpf){
-
-    int resultado_codigo, resultado_cpf;
-    Ingresso ingresso_aux;
-    CPF cpf_aux;
-    Codigo_de_Ingresso codigo_ingresso;
-    bool resultado;
-
-    ingressos_cpf.getIngressos_CPF(&ingresso_aux, &cpf_aux);
-    ingresso_aux.getIngresso(&codigo_ingresso);
-    int chave = codigo_ingresso.getCodigo_de_Ingresso();
-
-    for(list<Ingressos_CPF>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-
-           elemento->getIngressos_CPF(&ingresso_aux, &cpf_aux);
-           ingresso_aux.getIngresso(&codigo_ingresso);
-           resultado_codigo = codigo_ingresso.getCodigo_de_Ingresso();
-
-        if (resultado_codigo == chave){
-
-            // Elemento localizado.
-
-            resultado = false;
-            cout << "Apresentacao ja cadastrada" << "\n\n";
-            return resultado;
-        }
-    }
-
-    // Incluir o elemento no container.
-
-    container.push_back(ingressos_cpf);
-    resultado = true;
-    cout << "apresentacao cadastrada com sucesso" << "\n\n";
-    return resultado;
-
-}
-
-bool Container_Apresentacoes::remover(Ingressos_CPF ingressos_cpf){
-
-    int resultado_codigo, resultado_cpf;
-    Ingresso ingresso_aux;
-    CPF cpf_aux;
-    Codigo_de_Ingresso codigo_ingresso;
-    bool resultado;
-
-    ingressos_cpf.getIngressos_CPF(&ingresso_aux, &cpf_aux);
-    ingresso_aux.getIngresso(&codigo_ingresso);
-    int chave = codigo_ingresso.getCodigo_de_Ingresso();
-
-    for(list<Ingressos_CPF>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-
-           elemento->getIngressos_CPF(&ingresso_aux, &cpf_aux);
-           ingresso_aux.getIngresso(&codigo_ingresso);
-           resultado_codigo = codigo_ingresso.getCodigo_de_Ingresso();
-
-        if (resultado_codigo == chave){
-
-            // Elemento localizado.
-
-            container.erase(elemento);
-            resultado = true;
-        }
-    }
-
-    resultado = false;
-    return resultado;
-}
-
-Ingressos_CPF Container_Apresentacoes::pesquisar(Codigo_de_Ingresso codigo){
-
-    // Procurar elemento.
-
-    int chave = codigo.getCodigo_de_Ingresso();
-    int resultado_codigo, resultado_cpf;
-    Ingresso ingresso_aux;
-    Codigo_de_Ingresso codigo_ingresso;
-    CPF cpf_aux;
-    Ingressos_CPF resultado;
-
-    for(list<Ingressos_CPF>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-
-           elemento->getIngressos_CPF(&ingresso_aux, &cpf_aux);
-           ingresso_aux.getIngresso(&codigo_ingresso);
-           resultado_codigo = codigo_ingresso.getCodigo_de_Ingresso();
-
-        if (resultado_codigo == chave){
-
-            // Elemento localizado.
-            resultado.setIngressos_CPF(ingresso_aux, cpf_aux);
-            cout << "Ingresso vinculado encontrado";
-            cout << "\n";
-            return resultado;
-        }
-    }
-
-    cout << "Ingresso vinculado nao encontrado";
-    cout << "\n\n";
-    return resultado;
-}
-*/

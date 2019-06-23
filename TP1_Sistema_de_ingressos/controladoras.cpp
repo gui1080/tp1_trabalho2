@@ -191,15 +191,6 @@ return cartao_de_credito_aux;
 
 }
 
-Apresentacao CntrIUUsuario::Menu_Edicao_apresentacao(){
-
-
-}
-
-Usuario CntrIUUsuario::Menu_Edicao_usuario(){
-
-}
-
 bool CntrISUsuario::Cadastrar(ContainerUsuario *container_u, ContainerCartao_de_credito *container_c, Usuario usuario, Cartao_de_credito cartao_de_credito) throw(runtime_error){
 
 Usuario usuario_aux;
@@ -255,20 +246,19 @@ void CntrIUUsuario::Menu_Logado(Usuario usuario, ContainerUsuario *container_u, 
 
     usuario.getUsuario(&cpf_aux, &senha_aux);
 
-while(escolha != 9){
+while(escolha != 8){
 
     cout << "\n------------------------------------------------------" << endl;
     cout << "--------  Escolha o que se deseja fazer: -------------" << endl;
     cout << "------------------------------------------------------" << endl;
     cout << "-------- Visualizar dados da conta: Digite 1 ---------" << endl;
-    cout << "----------     Editar conta:  Digite 2 ---------------" << endl;
-    cout << "-------- Consultar apresentacoes: Digite 3 -----------" << endl;
-    cout << "----------- Cadastrar evento: Digite 4 ---------------" << endl;
-    cout << "---------- Editar evento cadastrado: Digite 5 --------" << endl;
-    cout << "------------- Comprar Ingresso: Digite 6 -------------" << endl;
-    cout << "------- Visualizar minhas vendas: Digite 7 -----------" << endl;
-    cout << "------- Remover Evento cadastrado: Digite 8 ----------" << endl;
-    cout << "-------------- Fazer logout: Digite 9 ----------------" << endl;
+    cout << "--- Visualizar eventos e apresentacoes: Digite 2 -----" << endl;
+    cout << "----------- Cadastrar evento: Digite 3 ---------------" << endl;
+    cout << "---------- Editar evento cadastrado: Digite 4 --------" << endl;
+    cout << "------------- Comprar Ingresso: Digite 5 -------------" << endl;
+    cout << "------- Visualizar minhas vendas: Digite 6 -----------" << endl;
+    cout << "------- Remover Evento cadastrado: Digite 7 ----------" << endl;
+    cout << "-------------- Fazer logout: Digite 8 ----------------" << endl;
     cout << "------------------------------------------------------\n" << endl;
 
     cin >> escolha;
@@ -278,11 +268,8 @@ while(escolha != 9){
     case 1:
 
              cout << "------------------- MEU USUARIO ----------------------" << endl;
-             cout << "CPF: " << cpf_aux.getCPF() << endl;
-             cout << "Senha: " << senha_aux.getSenha() << endl;
-             cout << "------------- MEU CARTAO DE CREDITO ------------------" << endl;
-            //cout << "CPF: " << resultado_meus_dados.getUsuario();
-             cout << "------------- CODIGO DOS MEUS EVENTOS ----------------" << endl;
+             cout << "---------------- CPF: " << cpf_aux.getCPF() << endl;
+             cout << "---------------- Senha: " << senha_aux.getSenha() << endl;
              cout << "------- CODIGO DOS MEUS INGRESSOS COMPRADOS ----------\n" << endl;
              cntrISUsuario.Mostrar_Compras(usuario, container_i);
 
@@ -290,13 +277,12 @@ while(escolha != 9){
 
     case 2:
 
+            container_e->mostrar();
+            container_ap->mostrar();
+
             break;
 
     case 3:
-
-            break;
-
-    case 4:
 
             evento_aux = cntrIUUsuario.Menu_Criar_Evento(usuario);
             cntrISUsuario.Cadastrar_Evento(container_e, evento_aux);
@@ -313,7 +299,7 @@ while(escolha != 9){
 
             break;
 
-    case 5:
+    case 4:
 
             resultado_e = cntrIUUsuario.Menu_Edicao_evento(usuario, container_e, container_i);
 
@@ -324,7 +310,7 @@ while(escolha != 9){
             }
             break;
 
-    case 6:
+    case 5:
 
             resultado_ing = cntrIUVendas.Achar_Ingresso(usuario, container_e, container_ap);
             ingresso_aux = resultado_ing.getIngresso();
@@ -332,13 +318,13 @@ while(escolha != 9){
 
             break;
 
-    case 7:
+    case 6:
 
             cntrISUsuario.Mostrar_Vendas(usuario, container_i);
 
             break;
 
-    case 8:
+    case 7:
 
             resultado_e = cntrIUUsuario.Menu_Remocao_Evento(usuario, container_e, container_i);
 
