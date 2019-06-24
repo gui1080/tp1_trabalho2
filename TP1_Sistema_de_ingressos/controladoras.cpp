@@ -20,14 +20,14 @@ Usuario CntrIUAutenticacao::Tela_login()throw(runtime_error){
     cin >> senha_aux_login;
     cout << "------------------------------------------------------" << endl;
 
-    usuario_aux.setUsuario(cpf_aux_login, senha_aux_login);
-
     try{
         usuario_aux.setUsuario(cpf_aux_login, senha_aux_login);
     }
     catch(invalid_argument excecao){
-        cout << "Erros cometidos!" <<endl;
-        //return;
+
+    cout << "Erros cometidos!" <<endl;
+    exit(0);
+
     }
 
     return usuario_aux;
@@ -45,13 +45,17 @@ bool CntrISAutenticacao::Autenticar(ContainerUsuario *container_usuario, Usuario
 
     if(resultado_usuario.getValor() == resultado_usuario.FALHA){
 
-        cout << "Usuario nao cadastrado\n";
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "------------ USUARIO NAO CADASTRADO -------------------" << endl;
+        cout << "-------------------------------------------------------" << endl;
 
         return false;
 
     } else if(resultado_usuario.getValor() == resultado_usuario.SUCESSO){
 
-    cout << "usuario encontrado\n";
+    cout << "\n------------------------------------------------------" << endl;
+        cout << "--------------- USUARIO ENCONTRADO --------------------" << endl;
+        cout << "-------------------------------------------------------" << endl;
 
         return true;
 
@@ -74,7 +78,7 @@ Usuario CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, Containe
     cntrIUUsuario.setCntrISUsuario(&cntrISUsuario);
 
     bool mostra_evento, mostra_apresentacao;
-    //CntrISAutenticacao cntrISAutenticacao;
+
     bool login = false;
 
     while (login == false){
@@ -121,7 +125,9 @@ Usuario CntrISAutenticacao::Mostrar_Menu(ContainerUsuario *container_u, Containe
 
         case 4:
 
-            cout << "Adeus e volte sempre!" << endl;
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "-------------- ADEUS E VOLTE SEMPRE -------------------" << endl;
+        cout << "-------------------------------------------------------" << endl;
             exit(0);
 
             break;
@@ -149,15 +155,15 @@ Usuario CntrIUUsuario::Criar_usuario() throw(runtime_error){
     cin >> nova_senha;
     cout << "------------------------------------------------------" << endl;
 
-    //usuario_aux.setUsuario(29700582191, "Pao123");
-    usuario_aux.setUsuario(novo_cpf, nova_senha);
 
     try{
         usuario_aux.setUsuario(novo_cpf, nova_senha);
     }
     catch(invalid_argument excecao){
+
         cout << "Erros cometidos!" <<endl;
-        //return;
+        exit(0);
+
     }
 
 
@@ -196,14 +202,13 @@ Cartao_de_credito CntrIUUsuario::Criar_cartao_de_credito(Usuario usuario) throw(
     cout << "------------------------------------------------------" << endl;
 
     //cartao_de_credito_aux.setCartao_de_credito(30211944335337, 123, "10/10", cpf_aux.getCPF());
-    cartao_de_credito_aux.setCartao_de_credito(novo_num_cartao, novo_cod_cartao, nova_data, cpf_aux.getCPF());
 
     try{
         cartao_de_credito_aux.setCartao_de_credito(novo_num_cartao, novo_cod_cartao, nova_data, cpf_aux.getCPF());
     }
     catch(invalid_argument excecao){
         cout << "Erros cometidos!" <<endl;
-        //return;
+        exit(0);
     }
 
     cartao_de_credito_aux.getCartao_de_credito(&numero_aux, &codigo_aux, &data_aux, &cpf_aux);
@@ -320,10 +325,13 @@ while(escolha != 8){
             apresentacao_aux = cntrIUUsuario.Menu_Criar_Apresentacao(evento_aux);
             cntrISUsuario.Cadastrar_Apresentacao(container_ap, apresentacao_aux);
 
-            cout << "Digite 1 se deseja adicionar apresentacoes e 2 caso deseje voltar\n";
+      cout << "\n--------------------------------------------------------------------" << endl;
+        cout << "-DIGITE 1 SE DESEJA ADICIONAR APRESENTACOES E 2 CASO DESEJE VOLTAR -" << endl;
+        cout << "--------------------------------------------------------------------" << endl;
             cin >> escolha_ap;
 
             }
+            escolha_ap = 1;
 
             break;
 
@@ -406,7 +414,15 @@ Evento CntrIUUsuario::Menu_Criar_Evento(Usuario usuario)throw(runtime_error){
     cin >> faixa_evento;
     cout << "------------------------------------------------------\n" << endl;
 
+    try {
+
     evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_aux.getCPF());
+
+    } catch (invalid_argument excecao){
+    cout << "Evento Invalido";
+    exit(0);
+
+    }
 
     return evento_final;
 }
@@ -493,7 +509,7 @@ ResultadoEvento CntrIUUsuario::Menu_Edicao_evento(Usuario usuario, ContainerEven
     cout << "\n------------------------------------------------------" << endl;
     cout << "------------------- EDITAR EVENTO: --------------------" << endl;
     cout << "-------------------------------------------------------" << endl;
-    cout << "- DIGITE O CODIGO DA APRESENTACAO QUE DESEJA EDITAR ---" << endl;
+    cout << "------ DIGITE O CODIGO DO EVENTO QUE DESEJA EDITAR ----" << endl;
     cout << "-------------------------------------------------------" << endl;
     cin >> codigo_e_aux;
 
@@ -533,34 +549,22 @@ ResultadoEvento CntrIUUsuario::Menu_Edicao_evento(Usuario usuario, ContainerEven
     cout << "------------------------------------------------------\n" << endl;
     cpf_dono_evento = cpf_aux_usuario.getCPF();
 
-    evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_dono_evento);
-
-   try{
+ try{
         evento_final.setEvento(codigo_evento, nome_evento, cidade_evento, estado_evento, classe_evento, faixa_evento, cpf_dono_evento);
     }
     catch(invalid_argument excecao){
         cout << "Erros cometidos!" <<endl;
-        //return;
+        exit(0);
     }
-
 
     resultado_e.setValor(Resultado::SUCESSO);
-
-   try{
-        resultado_e.setValor(Resultado::SUCESSO);
-    }
-    catch(invalid_argument excecao){
-        cout << "Erros cometidos!" <<endl;
-        //return;
-    }
-
-    resultado_e.setEvento(evento_final);
 
    try{
         resultado_e.setEvento(evento_final);
     }
     catch(invalid_argument excecao){
         cout << "Erros cometidos!" <<endl;
+        exit(0);
         //return;
     }
 
@@ -591,7 +595,6 @@ void CntrISUsuario::Editar_Evento(Evento evento, ContainerEvento *container_e){
 
 }
 
-
 ResultadoEvento CntrIUUsuario::Menu_Remocao_Evento(Usuario usuario, ContainerEvento *container_e, ContainerIngresso *container_i){
 
     CntrGeral cntrGeral;
@@ -610,15 +613,6 @@ ResultadoEvento CntrIUUsuario::Menu_Remocao_Evento(Usuario usuario, ContainerEve
 
     resultado_e.setValor(Resultado::FALHA);
 
-    try{
-        resultado_e.setValor(Resultado::FALHA);
-    }
-    catch(invalid_argument excecao){
-        cout << "Erros cometidos!" <<endl;
-        //return;
-    }
-
-
     cout << "\n------------------------------------------------------" << endl;
     cout << "------------------- REMOVER EVENTO: --------------------" << endl;
     cout << "-------------------------------------------------------" << endl;
@@ -629,43 +623,22 @@ ResultadoEvento CntrIUUsuario::Menu_Remocao_Evento(Usuario usuario, ContainerEve
     if(cntrISUsuario.Validar_Edicao_Evento(codigo_e_aux, usuario, container_e, container_i) == true){
 
      Evento evento_final;
-     codigo_evento.setCodigo_de_Evento(codigo_e_aux);
 
     try{
         codigo_evento.setCodigo_de_Evento(codigo_e_aux);
     }
     catch(invalid_argument excecao){
         cout << "Erros cometidos!" <<endl;
-        //return;
+        exit(0);
     }
-
-
 
      resultado_e = container_e->pesquisar_Evento(codigo_evento);
      resultado_e.setValor(Resultado::SUCESSO);
-
-    try{
-        resultado_e.setValor(Resultado::SUCESSO);
-    }
-    catch(invalid_argument excecao){
-        cout << "Erros cometidos!" <<endl;
-        //return;
-    }
-
-
 
     return resultado_e;
     } else {
 
     resultado_e.setValor(Resultado::FALHA);
-
-   try{
-        resultado_e.setValor(Resultado::FALHA);
-    }
-    catch(invalid_argument excecao){
-        cout << "Erros cometidos!" <<endl;
-        //return;
-    }
 
     return resultado_e;
     }
@@ -743,8 +716,6 @@ Apresentacao CntrIUUsuario::Menu_Criar_Apresentacao(Evento evento) throw(runtime
     cin >> disponibilidade_ap;
     cout << "------------------------------------------------------\n" << endl;
 
-    apresentacao_final.setApresentacao(codigo_ap, data_ap, horario_ap, preco_ap, sala_ap, disponibilidade_ap, codigo_aux.getCodigo_de_Evento());
-
     try{
 
     apresentacao_final.setApresentacao(codigo_ap, data_ap, horario_ap, preco_ap, sala_ap, disponibilidade_ap, codigo_aux.getCodigo_de_Evento());
@@ -752,6 +723,7 @@ Apresentacao CntrIUUsuario::Menu_Criar_Apresentacao(Evento evento) throw(runtime
     }
     catch(invalid_argument excecao){
         cout << "Erros cometidos!" <<endl;
+        exit(0);
         //return;
     }
 
@@ -803,9 +775,14 @@ ResultadoIngresso CntrIUVendas::Achar_Ingresso(Usuario usuario, ContainerEvento 
 
     if(resultado_ap.getValor() == Resultado::FALHA){
 
-        cout << "Apresentacao nao encontrada\n";
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "------------ APRESENTACAO NAO ENCONTRADA --------------" << endl;
+        cout << "-------------------------------------------------------" << endl;
+
         resultado_i.setValor(Resultado::FALHA);
+
         return resultado_i;
+
     } else {
         cout << "------------------------------------------------------" << endl;
         cout << "------------- APRESENTACAO ENCONTRADA: ---------------" << endl;
@@ -836,8 +813,6 @@ ResultadoIngresso CntrIUVendas::Achar_Ingresso(Usuario usuario, ContainerEvento 
 
         usuario.getUsuario(&cpf_c_aux, &senha_aux);
 
-        ingresso_final.setIngresso(codigo_i, codigo_ap, cpf_e_aux.getCPF(),cpf_c_aux.getCPF());
-
         try{
 
             ingresso_final.setIngresso(codigo_i, codigo_ap, cpf_e_aux.getCPF(),cpf_c_aux.getCPF());
@@ -845,6 +820,7 @@ ResultadoIngresso CntrIUVendas::Achar_Ingresso(Usuario usuario, ContainerEvento 
         }
         catch(invalid_argument excecao){
             cout << "Erros cometidos!" <<endl;
+            exit(0);
         //return;
         }
 
@@ -853,23 +829,12 @@ ResultadoIngresso CntrIUVendas::Achar_Ingresso(Usuario usuario, ContainerEvento 
 
         try{
 
-            resultado_i.setValor(Resultado::SUCESSO);
-
-        }
-        catch(invalid_argument excecao){
-            cout << "Erros cometidos!" <<endl;
-        //return;
-        }
-
-        resultado_i.setIngresso(ingresso_final);
-
-        try{
-
             resultado_i.setIngresso(ingresso_final);
 
         }
         catch(invalid_argument excecao){
             cout << "Erros cometidos!" <<endl;
+            exit(0);
         //return;
         }
 

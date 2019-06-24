@@ -30,8 +30,6 @@ public:
 class ISAutenticacao {
 public:
 
-    //virtual bool autenticar(ContainerUsuario container_susuario, Usuario usuario) throw(runtime_error) = 0;
-
     virtual ~ISAutenticacao(){}
 };
 
@@ -68,7 +66,6 @@ public:
 class IUVendas {
 public:
 
-
     virtual void setCntrISVendas(ISVendas *) = 0;
 
     virtual ~IUVendas(){}
@@ -76,7 +73,6 @@ public:
 
 class ISVendas {
 public:
-
 
     virtual ~ISVendas(){}
 };

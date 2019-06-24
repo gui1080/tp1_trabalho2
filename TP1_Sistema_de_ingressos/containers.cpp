@@ -13,7 +13,6 @@ ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
 
     usuario.getUsuario(&cpf_aux, &senha_aux);
     long long int chave = cpf_aux.getCPF();
-    //cout << "chave eh: " << chave << "\n";
 
     // Procurar o elemento.
 
@@ -26,7 +25,11 @@ ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
             // Elemento localizado.
 
             resultado.setValor(Resultado::FALHA);
-            cout << "usuario ja cadastrado" << "\n\n";
+
+            cout << "\n------------------------------------------------------" << endl;
+            cout << "-------------- USUARIO JA CADASTRADO ------------------" << endl;
+            cout << "-------------------------------------------------------" << endl;
+
             return resultado;
         }
     }
@@ -35,7 +38,11 @@ ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
 
     container.push_back(usuario);
     resultado.setValor(Resultado::SUCESSO);
-    cout << "usuario cadastrado com sucesso" << "\n\n";
+
+    cout << "\n------------------------------------------------------" << endl;
+    cout << "--------- USUARIO CADASTRADO COM SUCESSO --------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+
     return resultado;
 
 }
@@ -127,7 +134,11 @@ ResultadoCartao_de_credito ContainerCartao_de_credito::incluir(Cartao_de_credito
             // Elemento localizado.
 
             resultado.setValor(Resultado::FALHA);
-            cout << "cartao de credito ja cadastrado" << "\n\n";
+
+            cout << "\n------------------------------------------------------" << endl;
+            cout << "--------- CARTAO DE CREDITO JA CADASTRADO -------------" << endl;
+            cout << "-------------------------------------------------------" << endl;
+
             return resultado;
         }
     }
@@ -136,7 +147,11 @@ ResultadoCartao_de_credito ContainerCartao_de_credito::incluir(Cartao_de_credito
 
     container.push_back(cartao_de_credito);
     resultado.setValor(Resultado::SUCESSO);
-    cout << "cartao de credito cadastrado com sucesso" << "\n\n";
+
+    cout << "\n------------------------------------------------------" << endl;
+    cout << "------ CARTAO DE CREDITO CADASTRADO COM SUCESSO -------" << endl;
+    cout << "-------------------------------------------------------" << endl<< endl;
+
     return resultado;
 
 }
@@ -214,8 +229,6 @@ bool ContainerEvento::incluir(Evento evento){
 
     ResultadoEvento resultado;
 
-    //CPF cpf_aux;
-    //Senha senha_aux;
     Codigo_de_Evento codigo_de_evento_aux;
     Nome_de_Evento nome_de_evento_aux;
     Cidade cidade_aux;
@@ -231,7 +244,6 @@ bool ContainerEvento::incluir(Evento evento){
     evento.getEvento(&codigo_de_evento_aux, &nome_de_evento_aux, &cidade_aux, &estados_br_aux, &classe_de_evento_aux, &faixa_etaria_aux, &cpf_aux);
 
     int chave = codigo_de_evento_aux.getCodigo_de_Evento();
-    //cout << "chave eh: " << chave << "\n";
 
     // Procurar o elemento.
 
@@ -244,7 +256,11 @@ bool ContainerEvento::incluir(Evento evento){
             // Elemento localizado.
 
             resultado.setValor(Resultado::FALHA);
-            cout << "evento ja cadastrado" << "\n\n";
+
+            cout << "\n------------------------------------------------------" << endl;
+            cout << "-------------- EVENTO JA CADASTRADO -------------------" << endl;
+            cout << "-------------------------------------------------------" << endl;
+
             return false;
         }
     }
@@ -253,7 +269,11 @@ bool ContainerEvento::incluir(Evento evento){
 
     container.push_back(evento);
     resultado.setValor(Resultado::SUCESSO);
-    cout << "evento cadastrado com sucesso" << "\n\n";
+
+    cout << "\n------------------------------------------------------" << endl;
+    cout << "----------- EVENTO CADASTRADO COM SUCESSO -------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+
     return true;
 
 }
@@ -271,7 +291,6 @@ bool ContainerEvento::remover(Codigo_de_Evento codigo_ev){
 
     int chave = codigo_ev.getCodigo_de_Evento();
     int chave_atual;
-    //cout << "chave eh: " << chave << "\n";
 
     // Procurar o elemento.
 
@@ -407,7 +426,9 @@ bool ContainerEvento::mostrar(){
     long long int cpf_mostrar;
 
     // ver os elementos.
-    cout << "Eventos disponiveis:\n" <<endl;
+    cout << "\n------------------------------------------------------" << endl;
+    cout << "-------------- EVENTOS DISPONIVEIS --------------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
 
     for(list<Evento>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
@@ -421,20 +442,22 @@ bool ContainerEvento::mostrar(){
         faixa_etaria_mostrar = faixa_etaria_aux.getFaixa_Etaria();
         cpf_mostrar = cpf_aux.getCPF();
 
-        cout << "Codigo de Evento: ";
+        cout << "\n------------------------------------------------------" << endl;
+        cout << "----- Codigo de Evento: ";
         cout << cod_evento_mostrar << endl;
-        cout << "Nome do Evento: ";
+        cout << "----- Nome do Evento: ";
         cout << nome_evento_mostrar <<endl;
-        cout << "Cidade: ";
+        cout << "----- Cidade: ";
         cout << cidade_mostrar << endl;
-        cout << "Estado Brasileiro onde ocorre o Evento: ";
+        cout << "----- Estado Brasileiro onde ocorre o Evento: ";
         cout << estados_br_mostrar << endl;
-        cout << "Classe de Evento: ";
+        cout << "----- Classe de Evento: ";
         cout << classe_de_evento_mostrar <<endl;
-        cout << "Faixa Estaria: ";
+        cout << "----- Faixa Estaria: ";
         cout << faixa_etaria_mostrar << endl;
-        cout << "CPF de quem disponibiliza o evento: ";
+        cout << "----- CPF de quem disponibiliza o evento: ";
         cout << cpf_mostrar << endl;
+        cout << "-------------------------------------------------------" << endl;
         cout << "\n" << endl;
     }
 
@@ -501,7 +524,6 @@ bool ContainerEvento::achar_evento_em_cidade(Cidade cidade){
             }
         }
 
-
 }
 
 
@@ -535,7 +557,11 @@ bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
             // Elemento localizado.
 
             resultado = false;
-            cout << "Apresentacao ja cadastrada" << "\n\n";
+
+            cout << "\n-------------------------------------------------------" << endl;
+            cout << "---------- APRESENTACAO JA CADASTRADA -----------------" << endl;
+            cout << "-------------------------------------------------------" << endl;
+
             return resultado;
         }
     }
@@ -544,7 +570,11 @@ bool ContainerApresentacoes::incluir(Apresentacao apresentacao){
 
     container.push_back(apresentacao);
     resultado = true;
-    cout << "apresentacao cadastrada com sucesso" << "\n\n";
+
+    cout << "\n-------------------------------------------------------" << endl;
+    cout << "--------- APRESENTACAO CADASTRADA COM SUCESSO ---------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+
     return resultado;
 
 }
@@ -692,7 +722,9 @@ bool ContainerApresentacoes::mostrar(){
     int cod_ev_mostrar;
 
     // ver os elementos.
-    cout << "Apresentacoes disponiveis:\n" <<endl;
+    cout << "\n-------------------------------------------------------" << endl;
+    cout << "-------------- APRESENTACOES DISPONIVEIS --------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
 
     for(list<Apresentacao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
 
@@ -707,20 +739,22 @@ bool ContainerApresentacoes::mostrar(){
         disp_mostrar = disponibilidade_aux.getDisponibilidade();
         cod_ev_mostrar = codigo_de_evento_aux.getCodigo_de_Evento();
 
-        cout << "Codigo de Apresentacao: ";
+        cout << "\n-------------------------------------------------------" << endl;
+        cout << "----- Codigo de Apresentacao: ";
         cout << cod_ap_mostrar << endl;
-        cout << "Data: ";
+        cout << "----- Data: ";
         cout << data_mostrar <<endl;
-        cout << "Horario: ";
+        cout << "----- Horario: ";
         cout << horario_mostrar << endl;
-        cout << "Preco: ";
+        cout << "----- Preco: ";
         cout << preco_mostrar << endl;
-        cout << "Numero de sala: ";
+        cout << "----- Numero de sala: ";
         cout << num_sala_mostrar <<endl;
-        cout << "Disponibilidade: ";
+        cout << "----- Disponibilidade: ";
         cout << disp_mostrar << endl;
-        cout << "Evento ao qual a apresentacao esta relacionada: ";
+        cout << "----- Evento ao qual a apresentacao esta relacionada: ";
         cout << cod_ev_mostrar << endl;
+        cout << "-------------------------------------------------------" << endl;
         cout << "\n" << endl;
     }
 
@@ -755,7 +789,11 @@ ResultadoIngresso ContainerIngresso::incluir(Ingresso ingresso){
         if (resultado_codigo_i == chave){
 
             resultado.setValor(Resultado::FALHA);
-            cout << "Ingresso ja vendido" << "\n\n";
+
+            cout << "\n--------------------------------------------------------" << endl;
+            cout << "----------------- INGRESSO JA VENDIDO -----------------" << endl;
+            cout << "-------------------------------------------------------" << endl;
+
             return resultado;
         }
     }
@@ -764,7 +802,11 @@ ResultadoIngresso ContainerIngresso::incluir(Ingresso ingresso){
 
     container.push_back(ingresso);
     resultado.setValor(Resultado::SUCESSO);
-    cout << "ingresso comprado com sucesso" << "\n\n";
+
+    cout << "\n--------------------------------------------------------" << endl;
+    cout << "----------- INGRESSO COMPRADO COM SUCESSO -------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+
     return resultado;
 
 }
