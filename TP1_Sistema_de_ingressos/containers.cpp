@@ -1,6 +1,4 @@
 #include "containers.h"
-/* fazer classe resultado em um novo arquivo
-*/
 
 ResultadoUsuario ContainerUsuario::incluir(Usuario usuario){
 

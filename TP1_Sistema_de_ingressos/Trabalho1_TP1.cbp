@@ -53,12 +53,8 @@
 		</Unit>
 		<Unit filename="interfaces.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="resultados.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="resultados.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="resultados.cpp" />
+		<Unit filename="resultados.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

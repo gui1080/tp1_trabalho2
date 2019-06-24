@@ -3,6 +3,7 @@
 
 #include "interfaces.h"
 #include "dominios.h"
+#include "resultados.h"
 
 using namespace std;
 

@@ -3,6 +3,7 @@
 
 #include "dominios.h"
 #include "entidades.h"
+#include "resultados.h"
 
 #include <list>
 

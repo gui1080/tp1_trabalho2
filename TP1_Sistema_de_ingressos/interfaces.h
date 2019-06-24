@@ -4,6 +4,7 @@
 #include "dominios.h"
 #include "entidades.h"
 #include "containers.h"
+#include "resultados.h"
 #include <list>
 
 using namespace std;

@@ -88,7 +88,7 @@ int main(){
 
     std::cout.clear();
 
-    cout << "\n";
+    //cout << "\n";
 
     CntrGeral cntrGeral;
     CntrIUAutenticacao cntrIUAutenticacao;
@@ -109,8 +109,8 @@ int main(){
 
     while(1){
 
-    usuario_cliente = cntrISAutenticacao.Mostrar_Menu(&container, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
-    cntrIUUsuario.Menu_Logado(usuario_cliente, &container_usuario, &container_cartao_de_credito, &container_e, &container_ap, &container_i);
+        usuario_cliente = cntrISAutenticacao.Mostrar_Menu(&container, &container_cartao_de_credito, usuario_cliente, cartao_de_credito_cliente, container_e, container_ap);
+        cntrIUUsuario.Menu_Logado(usuario_cliente, &container_usuario, &container_cartao_de_credito, &container_e, &container_ap, &container_i);
 
     }
 
