@@ -19,8 +19,9 @@
 Feito por:
 Guilherme Braga Pinto
 Gabriel Matheus da Rocha de Oliveira
-Last Update: xx/xx/2019
-UnB
+Data limite de entrega: 25/06/2019
+Professor Fernando Antonio de Araújo Chacon de Albuquerque
+Primeiro semestre de 2019, UnB
 */
 
 //Obs- Seguimos certas convenções como as que foram demonstradas em exeplos de sala de aula ao dar nome às variáveis, classes e testes.
