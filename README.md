@@ -12,6 +12,8 @@ Data final de entrega: 25/05/2019
 
 -Buscar apresentação (mecanismo de busca codificado, mas não aplicado no sistema)
 
+-Limites (préviamente codificado, porém foi alterado e descartado)
+
 # Alunos
 
 Gabriel Matheus - 17/0103498
